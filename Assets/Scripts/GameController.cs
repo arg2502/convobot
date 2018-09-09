@@ -31,6 +31,15 @@ public class GameController : MonoBehaviour
     List<List<string>> conversationBits = new List<List<string>>();
     int conversationIndex = 0;
     int dialogIndex = 0;
+    public GameObject robotCharacter;
+    public GameObject otherCharacter;
+    public GameObject robotHatch;
+    public Vector3 robotOriginalPosition;
+    public Vector3 otherCharacterOriginalPosition;
+    public Vector3 robotZoomedPosition;
+    public Vector3 otherCharacterOffscreenPosition;
+    public Vector3 hatchOriginalPosition;
+    public Vector3 hatchOffPosition;
     void Start ()
     {
         List<string> conversation1 = new List<string>();
@@ -196,12 +205,49 @@ public class GameController : MonoBehaviour
 
     void StartMoveToFacialAdjustmentStage()
     {
-        //Move the other person off screen to the left
-        //Center the robot and move him closer to the camera
-        //Move the hatch off of the face and expose the facial adjustment inputs
-        //None of those components should be interactable during this stage
-        //Once all the movement is complete move on to the Facial Adjustment stage
+        StartCoroutine(MoveToFacialAdjustment());
     }
+
+    IEnumerator MoveToFacialAdjustment()
+    {
+        yield return StartCoroutine(MoveOtherPersonAway());
+        yield return StartCoroutine(MoveRobotUp());
+        hatchOffPosition.y = robotHatch.transform.position.y;
+        hatchOffPosition.z = robotHatch.transform.position.z;
+        hatchOriginalPosition.y = robotHatch.transform.position.y;
+        hatchOriginalPosition.z = robotHatch.transform.position.z;
+        yield return StartCoroutine(MoveHatchOff());
+        ChangeStage(GameStages.FacialAdjustmentStage);
+    }
+
+    IEnumerator MoveOtherPersonAway()
+    {
+        while (Vector3.Distance(otherCharacter.transform.position, otherCharacterOffscreenPosition) > 0.5f)
+        {
+            otherCharacter.transform.position = Vector3.MoveTowards(otherCharacter.transform.position, otherCharacterOffscreenPosition, 5 * Time.deltaTime);
+            yield return null;
+        }
+    }
+
+    IEnumerator MoveRobotUp()
+    {
+        while (Vector3.Distance(robotCharacter.transform.position, robotZoomedPosition) > 0.5f)
+        {
+            robotCharacter.transform.position = Vector3.MoveTowards(robotCharacter.transform.position, robotZoomedPosition, 5 * Time.deltaTime);
+            yield return null;
+        }
+    }
+
+    IEnumerator MoveHatchOff()
+    {
+        while (Vector3.Distance(robotHatch.transform.position, hatchOffPosition) > 0.01f)
+        {
+            robotHatch.transform.position = Vector3.MoveTowards(robotHatch.transform.position, hatchOffPosition, 5 * Time.deltaTime);
+            yield return null;
+        }
+    }
+
+
 
     void UpdateMoveToFacialAdjustmentStage()
     {
