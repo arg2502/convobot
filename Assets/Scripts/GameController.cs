@@ -40,6 +40,11 @@ public class GameController : MonoBehaviour
     public Vector3 otherCharacterOffscreenPosition;
     public Vector3 hatchOriginalPosition;
     public Vector3 hatchOffPosition;
+    public GameObject timerWindow;
+    public TextMeshPro timerText;
+    System.DateTime adjustmentTimer;
+    public int timerCooldown = 30;
+    public int timerCooldownDecay = 5;
     void Start ()
     {
         List<string> conversation1 = new List<string>();
@@ -251,7 +256,6 @@ public class GameController : MonoBehaviour
 
     void UpdateMoveToFacialAdjustmentStage()
     {
-        //Handles any updates needed for the Move To Facial Adjustment stage
     }
 
     void StartFacialAdjustmentStage()
@@ -260,26 +264,69 @@ public class GameController : MonoBehaviour
         //All adjustment components are now interactable
         //Have the compontents themselves adjust a set of numeric values so that we can compare them to the correct answers later
         //If the player hits the done button then go to the Move To Conversation stage
+        adjustmentTimer = System.DateTime.Now;
+        timerWindow.SetActive(true);
     }
 
     void UpdateFacialAdjustmentStage()
     {
-        //Check to see if we have gotten to the end of the timer
-        //If we have not then adjust a visable timer
-        //If we have gotten to the end of the timer go directly to the Move To Conversation stage
+        System.TimeSpan ts = System.DateTime.Now - adjustmentTimer;
+        if(ts.Seconds >= timerCooldown)
+        {
+            timerCooldown -= timerCooldownDecay;
+            ChangeStage(GameStages.MoveToConversationStage);
+        }
+        else
+        {
+            int timeStamp = timerCooldown - ts.Seconds;
+            timerText.text = timeStamp.ToString() + "s";
+        }
     }
 
     void StartMoveToConversationStage()
     {
-        //Move hatch back onto robot's face
-        //Move robot back to original position
-        //Move other person back to original position
-        //Once all that is done then go to Resolve Scoring stage
+        timerWindow.SetActive(false);
+        StartCoroutine(MoveToConversation());
     }
 
     void UpdateMoveToConversationStage()
     {
         //Handles any updates needed for the Move To Conversation stage
+    }
+
+    IEnumerator MoveToConversation()
+    {
+        yield return StartCoroutine(MoveHatchOn());
+        yield return StartCoroutine(MoveRobotBack());
+        yield return StartCoroutine(MoveOtherPersonBack());
+        ChangeStage(GameStages.ResolveScoringStage);
+    }
+
+    IEnumerator MoveOtherPersonBack()
+    {
+        while (Vector3.Distance(otherCharacter.transform.position, otherCharacterOriginalPosition) > 0.5f)
+        {
+            otherCharacter.transform.position = Vector3.MoveTowards(otherCharacter.transform.position, otherCharacterOriginalPosition, 5 * Time.deltaTime);
+            yield return null;
+        }
+    }
+
+    IEnumerator MoveRobotBack()
+    {
+        while (Vector3.Distance(robotCharacter.transform.position, robotOriginalPosition) > 0.5f)
+        {
+            robotCharacter.transform.position = Vector3.MoveTowards(robotCharacter.transform.position, robotOriginalPosition, 5 * Time.deltaTime);
+            yield return null;
+        }
+    }
+
+    IEnumerator MoveHatchOn()
+    {
+        while (Vector3.Distance(robotHatch.transform.position, hatchOriginalPosition) > 0.01f)
+        {
+            robotHatch.transform.position = Vector3.MoveTowards(robotHatch.transform.position, hatchOriginalPosition, 5 * Time.deltaTime);
+            yield return null;
+        }
     }
 
     void StartResolveScoringStage()
