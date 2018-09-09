@@ -10,7 +10,7 @@ public class Eyebrow : FacePart {
     public enum WhichEyebrow { LEFT, RIGHT }
     public WhichEyebrow whichEyebrow; // set in instructor
 
-    // used in determining which way the 
+    // used in determining which way the eyebrow rotates
     public int BrowSide { get { return (whichEyebrow == WhichEyebrow.LEFT) ? 1 : -1; } }
 
     float originalZRot; // base new rotation off of the original neutral position
