@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameController : MonoBehaviour
 {
@@ -18,8 +19,6 @@ public class GameController : MonoBehaviour
 
     //The robot character game object
     //The other person game object
-    //A list of lists of strings for dialog
-    //The index of dialog we are on currently
     //The original position of the robot
     //The original position of the other person
     //The zoomed in position of the robot
@@ -27,8 +26,30 @@ public class GameController : MonoBehaviour
     //A counter for the number of chances the player has before discovery
     //More stuff I can't think of at 2AM
 
+    public GameObject dialogWindow;
+    public TextMeshPro dialogText;
+    List<List<string>> conversationBits = new List<List<string>>();
+    int conversationIndex = 0;
+    int dialogIndex = 0;
     void Start ()
     {
+        List<string> conversation1 = new List<string>();
+        conversation1.Add("Hi my name is Karen.");
+        conversation1.Add("It's so nice to meet you.");
+        List<string> conversation2 = new List<string>();
+        conversation2.Add("I was worried you would not show up");
+        conversation2.Add("The last few dates I have had stood me up");
+        conversation2.Add("They left me waiting for hours");
+        List<string> conversation3 = new List<string>();
+        conversation3.Add("It has been a very hard week for me as well");
+        conversation3.Add("My goldfish died the other day");
+        List<string> conversation4 = new List<string>();
+        conversation4.Add("But you know what they say");
+        conversation4.Add("When life gives you lemons throw the lemons back at life");
+        conversationBits.Add(conversation1);
+        conversationBits.Add(conversation2);
+        conversationBits.Add(conversation3);
+        conversationBits.Add(conversation4);
         ChangeStage(GameStages.IntroStage);
 	}
 	
@@ -134,6 +155,7 @@ public class GameController : MonoBehaviour
     {
         //Do whatever movements or coroutines it takes to get the characters in their starting position
         //Once that is done move to the Conversation stage 
+        ChangeStage(GameStages.ConversationStage);
     }
 
     void UpdateIntroStage()
@@ -147,11 +169,29 @@ public class GameController : MonoBehaviour
         //Either have the current bubble disappear on click or after a certain amount of time
         //Assume that we will have some sort of list of a list of strings that we will pull from to supply the conversation for now
         //Once we are at the end of the current list of dialog move to the Move To Facial Adjustment stage
+        dialogWindow.SetActive(true);
+        dialogIndex = 0;
+        List<string> dialog = conversationBits[conversationIndex];
+        dialogText.text = dialog[dialogIndex];
     }
 
     void UpdateConversationStage()
     {
-        //Handles any updates needed for the Conversation stage
+        if(Input.GetMouseButtonUp(0))
+        {
+            List<string> dialog = conversationBits[conversationIndex];
+            ++dialogIndex;
+            if (dialogIndex >= dialog.Count)
+            {
+                dialogWindow.SetActive(false);
+                ++conversationIndex;
+                ChangeStage(GameStages.MoveToFacialAdjustmentStage);
+            }
+            else
+            {
+                dialogText.text = dialog[dialogIndex];
+            }
+        }
     }
 
     void StartMoveToFacialAdjustmentStage()
