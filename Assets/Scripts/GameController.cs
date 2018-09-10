@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -45,6 +46,9 @@ public class GameController : MonoBehaviour
     System.DateTime adjustmentTimer;
     public int timerCooldown = 30;
     public int timerCooldownDecay = 5;
+    public TextMeshPro resultText;
+    bool isCorrect = false;
+    public int chances = 3;
     void Start ()
     {
         List<string> conversation1 = new List<string>();
@@ -179,14 +183,17 @@ public class GameController : MonoBehaviour
 
     void StartConversationStage()
     {
-        //Go through and display any speech bubbles that are needed to to get to the point in the conversation where we need to adjust the facial expression
-        //Either have the current bubble disappear on click or after a certain amount of time
-        //Assume that we will have some sort of list of a list of strings that we will pull from to supply the conversation for now
-        //Once we are at the end of the current list of dialog move to the Move To Facial Adjustment stage
-        dialogWindow.SetActive(true);
-        dialogIndex = 0;
-        List<string> dialog = conversationBits[conversationIndex];
-        dialogText.text = dialog[dialogIndex];
+        if (conversationIndex >= conversationBits.Count)
+        {
+            ChangeStage(GameStages.EndStage);
+        }
+        else
+        {
+            dialogWindow.SetActive(true);
+            dialogIndex = 0;
+            List<string> dialog = conversationBits[conversationIndex];
+            dialogText.text = dialog[dialogIndex];
+        }
     }
 
     void UpdateConversationStage()
@@ -198,7 +205,6 @@ public class GameController : MonoBehaviour
             if (dialogIndex >= dialog.Count)
             {
                 dialogWindow.SetActive(false);
-                ++conversationIndex;
                 ChangeStage(GameStages.MoveToFacialAdjustmentStage);
             }
             else
@@ -274,6 +280,7 @@ public class GameController : MonoBehaviour
         if(ts.Seconds >= timerCooldown)
         {
             timerCooldown -= timerCooldownDecay;
+            ++conversationIndex;
             ChangeStage(GameStages.MoveToConversationStage);
         }
         else
@@ -336,6 +343,44 @@ public class GameController : MonoBehaviour
         //If the player does not have any dialog left then go directly to End stage
         //If not enough are correct play effects for incorrect responce and take away chance if the player has any, lets say they have 3 chances for now
         //If the player has no more chances left then go directly to the End stage
+        isCorrect = (Random.Range(0, 10) > 5);
+
+        if(isCorrect)
+        {
+            StartCoroutine(CorrectSequence());
+        }
+        else
+        {
+            --chances;
+            if(chances > 0)
+            {
+                StartCoroutine(IncorrectSequence());
+            }
+            else
+            {
+                ChangeStage(GameStages.EndStage);
+            }
+        }
+    }
+
+    IEnumerator CorrectSequence()
+    {
+        resultText.gameObject.SetActive(true);
+        resultText.text = "Correct!";
+        resultText.color = new Color32(20, 106, 20, 255);
+        yield return new WaitForSeconds(5);
+        resultText.gameObject.SetActive(false);
+        ChangeStage(GameStages.ConversationStage);
+    }
+
+    IEnumerator IncorrectSequence()
+    {
+        resultText.gameObject.SetActive(true);
+        resultText.text = "Karen is suspicious...";
+        resultText.color = new Color32(248, 8, 8, 255);
+        yield return new WaitForSeconds(5);
+        resultText.gameObject.SetActive(false);
+        ChangeStage(GameStages.ConversationStage);
     }
 
     void UpdateResolveScoringStage()
@@ -345,9 +390,34 @@ public class GameController : MonoBehaviour
 
     void StartEndStage()
     {
-        //If the player still has chances then the conversation was a success so play congradulations fanfare
-        //If the player does not have any chances left then they failed and have been found out as a robot, play lose fanfare
-        //Go back to start screen once this is all done
+        if(chances <= 0)
+        {
+            StartCoroutine(LoseSequence());
+        }
+        else
+        {
+            StartCoroutine(WinSequence());
+        }
+    }
+
+    IEnumerator WinSequence()
+    {
+        resultText.gameObject.SetActive(true);
+        resultText.text = "Success!";
+        resultText.color = new Color32(20, 106, 20, 255);
+        yield return new WaitForSeconds(5);
+        resultText.gameObject.SetActive(false);
+        SceneManager.LoadScene("PlayScene");
+    }
+
+    IEnumerator LoseSequence()
+    {
+        resultText.gameObject.SetActive(true);
+        resultText.text = "YOUR A ROBOT!!!!!";
+        resultText.color = new Color32(248, 8, 8, 255);
+        yield return new WaitForSeconds(5);
+        resultText.gameObject.SetActive(false);
+        SceneManager.LoadScene("PlayScene");
     }
 
     void UpdateEndStage()
