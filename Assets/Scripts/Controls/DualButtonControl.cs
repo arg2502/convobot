@@ -30,7 +30,6 @@ public class DualButtonControl : Control {
             value -= 0.1f;
             if (value < MIN_VALUE) value = MIN_VALUE;
         }
-        print(value);
 		base.UpdateFace();
 	}
 }
