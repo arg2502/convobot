@@ -38,6 +38,11 @@ public class Control : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
      
     protected void Update()
     {
+        if (value > MAX_VALUE)
+            value = MAX_VALUE;
+        if (value < MIN_VALUE)
+            value = MIN_VALUE;
+
         if(canMove)
             UpdateFace();
     }
