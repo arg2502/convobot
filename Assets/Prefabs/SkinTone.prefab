@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4033638720123778}
   m_Layer: 0
-  m_Name: Face
+  m_Name: SkinTone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
