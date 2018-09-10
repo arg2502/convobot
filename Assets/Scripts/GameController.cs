@@ -16,23 +16,35 @@ public class GameController : MonoBehaviour
 
     private GameStages currentStage;
 
-    //We will probably need as variables:
+    public enum Emotions
+    {
+        Sad,
+        Scared,
+        Happy,
+        Angry,
+        Amused,
+        Nervous,
+        Annoyed,
+        Romantic,
+        Confused,
+        Surprised,
+        Disgusted
+    };
 
-    //The robot character game object
-    //The other person game object
-    //The original position of the robot
-    //The original position of the other person
-    //The zoomed in position of the robot
-    //The offscreen position for the other person
-    //A counter for the number of chances the player has before discovery
-    //More stuff I can't think of at 2AM
+    [System.Serializable]
+    public struct LevelData
+    {
+        public List<string> conversationBits;
+        public Emotions emotion;
+    }
 
+    
     public GameObject dialogWindow;
     public TextMeshPro dialogText;
-    List<List<string>> conversationBits = new List<List<string>>();
     int conversationIndex = 0;
     int dialogIndex = 0;
     public GameObject robotCharacter;
+    public Robot robotComponents;
     public GameObject otherCharacter;
     public GameObject robotHatch;
     public Vector3 robotOriginalPosition;
@@ -49,25 +61,10 @@ public class GameController : MonoBehaviour
     public TextMeshPro resultText;
     bool isCorrect = false;
     public int chances = 3;
+    public List<LevelData> levelDatas;
     void Start ()
     {
-        List<string> conversation1 = new List<string>();
-        conversation1.Add("Hi my name is Karen.");
-        conversation1.Add("It's so nice to meet you.");
-        List<string> conversation2 = new List<string>();
-        conversation2.Add("I was worried you would not show up");
-        conversation2.Add("The last few dates I have had stood me up");
-        conversation2.Add("They left me waiting for hours");
-        List<string> conversation3 = new List<string>();
-        conversation3.Add("It has been a very hard week for me as well");
-        conversation3.Add("My goldfish died the other day");
-        List<string> conversation4 = new List<string>();
-        conversation4.Add("But you know what they say");
-        conversation4.Add("When life gives you lemons throw the lemons back at life");
-        conversationBits.Add(conversation1);
-        conversationBits.Add(conversation2);
-        conversationBits.Add(conversation3);
-        conversationBits.Add(conversation4);
+        robotComponents = robotCharacter.GetComponent<Robot>();
         ChangeStage(GameStages.IntroStage);
 	}
 	
@@ -183,7 +180,7 @@ public class GameController : MonoBehaviour
 
     void StartConversationStage()
     {
-        if (conversationIndex >= conversationBits.Count)
+        if (conversationIndex >= levelDatas.Count)
         {
             ChangeStage(GameStages.EndStage);
         }
@@ -191,7 +188,7 @@ public class GameController : MonoBehaviour
         {
             dialogWindow.SetActive(true);
             dialogIndex = 0;
-            List<string> dialog = conversationBits[conversationIndex];
+            List<string> dialog = levelDatas[conversationIndex].conversationBits;
             dialogText.text = dialog[dialogIndex];
         }
     }
@@ -200,7 +197,7 @@ public class GameController : MonoBehaviour
     {
         if(Input.GetMouseButtonUp(0))
         {
-            List<string> dialog = conversationBits[conversationIndex];
+            List<string> dialog = levelDatas[conversationIndex].conversationBits;
             ++dialogIndex;
             if (dialogIndex >= dialog.Count)
             {
@@ -280,7 +277,6 @@ public class GameController : MonoBehaviour
         if(ts.Seconds >= timerCooldown)
         {
             timerCooldown -= timerCooldownDecay;
-            ++conversationIndex;
             ChangeStage(GameStages.MoveToConversationStage);
         }
         else
@@ -343,9 +339,9 @@ public class GameController : MonoBehaviour
         //If the player does not have any dialog left then go directly to End stage
         //If not enough are correct play effects for incorrect responce and take away chance if the player has any, lets say they have 3 chances for now
         //If the player has no more chances left then go directly to the End stage
-        isCorrect = (Random.Range(0, 10) > 5);
-
-        if(isCorrect)
+        isCorrect = IsFaceCorrectEnough();
+        ++conversationIndex;
+        if (isCorrect)
         {
             StartCoroutine(CorrectSequence());
         }
@@ -361,6 +357,499 @@ public class GameController : MonoBehaviour
                 ChangeStage(GameStages.EndStage);
             }
         }
+    }
+
+    bool IsFaceCorrectEnough()
+    {
+        Emotions currentEmotion = levelDatas[conversationIndex].emotion;
+        switch(currentEmotion)
+        {
+            case Emotions.Amused:
+                {
+                    int correctCounter = 0;
+                    if(robotComponents.robotLeftEyebrow.eyebrowState == Eyebrow.EyebrowState.NEUTRAL)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if(robotComponents.robotRightEyebrow.eyebrowState == Eyebrow.EyebrowState.NEUTRAL)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if(robotComponents.robotRightEyelids.eyelidState == Eyelids.EyelidState.OPEN)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotLeftEyelids.eyelidState == Eyelids.EyelidState.OPEN)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if(robotComponents.robotSkinTone.skinState == SkinTone.SkinState.NEUTRAL)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if(robotComponents.robotMouthOpen.mouthOpenState == MouthOpen.MouthOpenState.OPEN)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if(robotComponents.robotMouthSmile.mouthSmileState == MouthSmile.MouthSmileState.SMILE)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if(correctCounter >= 4)
+                    {
+                        return true;
+                    }
+                    break;
+                }
+            case Emotions.Angry:
+                {
+                    int correctCounter = 0;
+                    if (robotComponents.robotLeftEyebrow.eyebrowState == Eyebrow.EyebrowState.LOWERED)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotRightEyebrow.eyebrowState == Eyebrow.EyebrowState.LOWERED)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotRightEyelids.eyelidState == Eyelids.EyelidState.SQUINTING)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotLeftEyelids.eyelidState == Eyelids.EyelidState.SQUINTING)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.FURIOUS)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotMouthOpen.mouthOpenState == MouthOpen.MouthOpenState.CLOSED)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotMouthSmile.mouthSmileState == MouthSmile.MouthSmileState.FROWN)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (correctCounter >= 4)
+                    {
+                        return true;
+                    }
+                    break;
+                }
+            case Emotions.Annoyed:
+                {
+                    int correctCounter = 0;
+                    if (robotComponents.robotLeftEyebrow.eyebrowState == Eyebrow.EyebrowState.LOWERED)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotRightEyebrow.eyebrowState == Eyebrow.EyebrowState.LOWERED)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotRightEyelids.eyelidState == Eyelids.EyelidState.SQUINTING)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotLeftEyelids.eyelidState == Eyelids.EyelidState.SQUINTING)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.NEUTRAL)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotMouthOpen.mouthOpenState == MouthOpen.MouthOpenState.CLOSED)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotMouthSmile.mouthSmileState == MouthSmile.MouthSmileState.SLIGHTFROWN)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (correctCounter >= 4)
+                    {
+                        return true;
+                    }
+                    break;
+                }
+            case Emotions.Confused:
+                {
+                    int correctCounter = 0;
+                    if (robotComponents.robotLeftEyebrow.eyebrowState == Eyebrow.EyebrowState.LOWERED)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotRightEyebrow.eyebrowState == Eyebrow.EyebrowState.LOWERED)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotRightEyelids.eyelidState == Eyelids.EyelidState.SQUINTING)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotLeftEyelids.eyelidState == Eyelids.EyelidState.SQUINTING)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.NEUTRAL)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotMouthOpen.mouthOpenState == MouthOpen.MouthOpenState.AJAR)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotMouthSmile.mouthSmileState == MouthSmile.MouthSmileState.NEUTRAL)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (correctCounter >= 4)
+                    {
+                        return true;
+                    }
+                    break;
+                }
+            case Emotions.Disgusted:
+                {
+                    int correctCounter = 0;
+                    if (robotComponents.robotLeftEyebrow.eyebrowState == Eyebrow.EyebrowState.LOWERED)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotRightEyebrow.eyebrowState == Eyebrow.EyebrowState.LOWERED)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotRightEyelids.eyelidState == Eyelids.EyelidState.SQUINTING)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotLeftEyelids.eyelidState == Eyelids.EyelidState.SQUINTING)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.PALE)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotMouthOpen.mouthOpenState == MouthOpen.MouthOpenState.OPEN)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotMouthSmile.mouthSmileState == MouthSmile.MouthSmileState.FROWN)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (correctCounter >= 4)
+                    {
+                        return true;
+                    }
+                    break;
+                }
+            case Emotions.Happy:
+                {
+                    int correctCounter = 0;
+                    if (robotComponents.robotLeftEyebrow.eyebrowState == Eyebrow.EyebrowState.NEUTRAL)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotRightEyebrow.eyebrowState == Eyebrow.EyebrowState.NEUTRAL)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotRightEyelids.eyelidState == Eyelids.EyelidState.OPEN)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotLeftEyelids.eyelidState == Eyelids.EyelidState.OPEN)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.NEUTRAL)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotMouthOpen.mouthOpenState == MouthOpen.MouthOpenState.CLOSED)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotMouthSmile.mouthSmileState == MouthSmile.MouthSmileState.SMILE)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (correctCounter >= 4)
+                    {
+                        return true;
+                    }
+                    break;
+                }
+            case Emotions.Nervous:
+                {
+                    int correctCounter = 0;
+                    if (robotComponents.robotLeftEyebrow.eyebrowState == Eyebrow.EyebrowState.RAISED)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotRightEyebrow.eyebrowState == Eyebrow.EyebrowState.RAISED)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotRightEyelids.eyelidState == Eyelids.EyelidState.OPEN)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotLeftEyelids.eyelidState == Eyelids.EyelidState.OPEN)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.PALE)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotMouthOpen.mouthOpenState == MouthOpen.MouthOpenState.CLOSED)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotMouthSmile.mouthSmileState == MouthSmile.MouthSmileState.NEUTRAL)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (correctCounter >= 4)
+                    {
+                        return true;
+                    }
+                    break;
+                }
+            case Emotions.Romantic:
+                {
+                    int correctCounter = 0;
+                    if (robotComponents.robotLeftEyebrow.eyebrowState == Eyebrow.EyebrowState.NEUTRAL)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotRightEyebrow.eyebrowState == Eyebrow.EyebrowState.NEUTRAL)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotRightEyelids.eyelidState == Eyelids.EyelidState.SQUINTING)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotLeftEyelids.eyelidState == Eyelids.EyelidState.SQUINTING)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.NEUTRAL)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotMouthOpen.mouthOpenState == MouthOpen.MouthOpenState.CLOSED)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotMouthSmile.mouthSmileState == MouthSmile.MouthSmileState.SMIRK)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (correctCounter >= 4)
+                    {
+                        return true;
+                    }
+                    break;
+                }
+            case Emotions.Sad:
+                {
+                    int correctCounter = 0;
+                    if (robotComponents.robotLeftEyebrow.eyebrowState == Eyebrow.EyebrowState.NEUTRAL)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotRightEyebrow.eyebrowState == Eyebrow.EyebrowState.NEUTRAL)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotRightEyelids.eyelidState == Eyelids.EyelidState.CLOSED)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotLeftEyelids.eyelidState == Eyelids.EyelidState.CLOSED)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.NEUTRAL)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotMouthOpen.mouthOpenState == MouthOpen.MouthOpenState.CLOSED)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotMouthSmile.mouthSmileState == MouthSmile.MouthSmileState.FROWN)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (correctCounter >= 4)
+                    {
+                        return true;
+                    }
+                    break;
+                }
+            case Emotions.Scared:
+                {
+                    int correctCounter = 0;
+                    if (robotComponents.robotLeftEyebrow.eyebrowState == Eyebrow.EyebrowState.RAISED)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotRightEyebrow.eyebrowState == Eyebrow.EyebrowState.RAISED)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotRightEyelids.eyelidState == Eyelids.EyelidState.OPEN)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotLeftEyelids.eyelidState == Eyelids.EyelidState.OPEN)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.PALE)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotMouthOpen.mouthOpenState == MouthOpen.MouthOpenState.OPEN)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotMouthSmile.mouthSmileState == MouthSmile.MouthSmileState.FROWN)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (correctCounter >= 4)
+                    {
+                        return true;
+                    }
+                    break;
+                }
+            case Emotions.Surprised:
+                {
+                    int correctCounter = 0;
+                    if (robotComponents.robotLeftEyebrow.eyebrowState == Eyebrow.EyebrowState.RAISED)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotRightEyebrow.eyebrowState == Eyebrow.EyebrowState.RAISED)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotRightEyelids.eyelidState == Eyelids.EyelidState.OPEN)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotLeftEyelids.eyelidState == Eyelids.EyelidState.OPEN)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.BLUSHING)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotMouthOpen.mouthOpenState == MouthOpen.MouthOpenState.OPEN)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (robotComponents.robotMouthSmile.mouthSmileState == MouthSmile.MouthSmileState.NEUTRAL)
+                    {
+                        ++correctCounter;
+                    }
+
+                    if (correctCounter >= 4)
+                    {
+                        return true;
+                    }
+                    break;
+                }
+        }
+        return false;
     }
 
     IEnumerator CorrectSequence()

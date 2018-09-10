@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -162,6 +162,24 @@ MonoBehaviour:
   timerCooldownDecay: 5
   resultText: {fileID: 533374531}
   chances: 3
+  levelDatas:
+  - conversationBits:
+    - Hi my name is Karen.
+    - It's so nice to meet you.
+    emotion: 2
+  - conversationBits:
+    - I was worried you would not show up
+    - The last few dates I have had stood me up
+    - They left me waiting for hours
+    emotion: 3
+  - conversationBits:
+    - It has been a very hard week for me as well
+    - My goldfish died the other day
+    emotion: 0
+  - conversationBits:
+    - But you know what they say
+    - When life gives you lemons throw the lemons back at life
+    emotion: 4
 --- !u!4 &237725735
 Transform:
   m_ObjectHideFlags: 0
@@ -774,8 +792,68 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86cae54651f25bb43a84f54808f332e8, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &1964499110 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114362874300903456, guid: 86cae54651f25bb43a84f54808f332e8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1964499109}
+  m_Script: {fileID: 11500000, guid: 799e3bf2f1a50364d96711ff2471ba54, type: 3}
+--- !u!114 &1964499111 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114412477642243558, guid: 86cae54651f25bb43a84f54808f332e8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1964499109}
+  m_Script: {fileID: 11500000, guid: d324e2a0178f27c4cb2b9b41fcc40df6, type: 3}
+--- !u!114 &1964499112 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114590918332931864, guid: 86cae54651f25bb43a84f54808f332e8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1964499109}
+  m_Script: {fileID: 11500000, guid: c522519c4a92ff74c93b23974f4fe682, type: 3}
+--- !u!114 &1964499113 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114692620731527898, guid: 86cae54651f25bb43a84f54808f332e8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1964499109}
+  m_Script: {fileID: 11500000, guid: 40ba9a8e8626efa47ba1444c2e473252, type: 3}
+--- !u!114 &1964499114 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114746730739223308, guid: 86cae54651f25bb43a84f54808f332e8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1964499109}
+  m_Script: {fileID: 11500000, guid: 8f619b9a8af15f64581ff09400ff4eea, type: 3}
+--- !u!114 &1964499115 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114347776485518450, guid: 86cae54651f25bb43a84f54808f332e8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1964499109}
+  m_Script: {fileID: 11500000, guid: 40ba9a8e8626efa47ba1444c2e473252, type: 3}
+--- !u!114 &1964499116 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114133807680573888, guid: 86cae54651f25bb43a84f54808f332e8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1964499109}
+  m_Script: {fileID: 11500000, guid: 8f619b9a8af15f64581ff09400ff4eea, type: 3}
 --- !u!1 &1973348282 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1048472596065274, guid: 86cae54651f25bb43a84f54808f332e8,
     type: 2}
   m_PrefabInternal: {fileID: 1964499109}
+--- !u!114 &1973348283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1973348282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b6741116546ec84cbe67a996c1f136d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  robotRightEyebrow: {fileID: 1964499116}
+  robotRightEyelids: {fileID: 1964499115}
+  robotLeftEyebrow: {fileID: 1964499114}
+  robotLeftEyelids: {fileID: 1964499113}
+  robotMouthOpen: {fileID: 1964499112}
+  robotMouthSmile: {fileID: 1964499111}
+  robotSkinTone: {fileID: 1964499110}
