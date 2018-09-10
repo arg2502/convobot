@@ -26,12 +26,12 @@ public class Control : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
     }
 
     // OnMouse functions for when interacting to 3D GameObjects
-    void OnMouseDown()
+    protected virtual void OnMouseDown()
     {
         canMove = true;
     }
 
-    void OnMouseUp()
+    protected virtual void OnMouseUp()
     {
         canMove = false;
     }
