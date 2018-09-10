@@ -9,7 +9,7 @@ public class Eyelids : FacePart {
 
     float openPos;
     float closedPos = 0.5f;
-    float originalYPos;
+    float middleYPos;
 
     public enum EyelidState { OPEN, SQUINTING, CLOSED }
     public EyelidState eyelidState;
@@ -26,7 +26,8 @@ public class Eyelids : FacePart {
         newUpper.y *= -1;
         lowerlid.transform.localPosition = newUpper;
 
-        originalYPos = upperlid.transform.localPosition.y;
+        middleYPos = upperlid.transform.localPosition.y;
+
 	}
 	
 	// Update is called once per frame
@@ -39,7 +40,7 @@ public class Eyelids : FacePart {
     void MoveLids()
     {
         var newPos = upperlid.transform.localPosition;
-        newPos.y = originalYPos + (value * (originalYPos - closedPos));
+        newPos.y = middleYPos + (value * (middleYPos - closedPos)); // some math was done to limit the lids to their open/closed positions
         upperlid.transform.localPosition = newPos;
         newPos.y *= -1;
         lowerlid.transform.localPosition = newPos;
