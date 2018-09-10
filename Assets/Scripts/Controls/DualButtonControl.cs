@@ -18,11 +18,19 @@ public class DualButtonControl : Control {
 	void updateValue(string direction)
 	{
         if(direction == "Up") {
-            value += 0.1f;
-        } else {
-            value -= 0.1f;
-        }
+            if (value >= MAX_VALUE)
+                return;
 
+            value += 0.1f;
+            if (value > MAX_VALUE) value = MAX_VALUE;
+        } else {
+            if (value <= MIN_VALUE)
+                return;
+
+            value -= 0.1f;
+            if (value < MIN_VALUE) value = MIN_VALUE;
+        }
+        print(value);
 		base.UpdateFace();
 	}
 }
