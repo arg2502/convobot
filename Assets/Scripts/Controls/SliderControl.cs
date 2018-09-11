@@ -46,7 +46,10 @@ public class SliderControl : Control {
             var time = (value + 1) / 2f;
             if (time >= 1f) time = 0.99f;
             else if (time <= 0f) time = 0f;
-            slideAnimator.Play("Slider", -1, time);
+            var stateName = "Slider";
+            if (gameObject.name.Contains("B"))
+                stateName += "B";
+            slideAnimator.Play(stateName, -1, time);
         }
     }
 }
