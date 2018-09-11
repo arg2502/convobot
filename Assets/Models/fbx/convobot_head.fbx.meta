@@ -1,0 +1,237 @@
+fileFormatVersion: 2
+guid: f88890ab58654554db80419e7a3201ce
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Background
+    100002: CINEMA_4D_Editor
+    100004: //RootNode
+    100006: convobot_ref1
+    100008: convobot_ref2
+    100010: EarSwirl_Sweep_backup
+    100012: hair_back
+    100014: hair_backup1
+    100016: hair_backup2
+    100018: hair_bowl
+    100020: head
+    100022: head_backup
+    100024: L_brow
+    100026: L_brow_backup
+    100028: L_ear
+    100030: L_ear_swirl
+    100032: L_eye
+    100034: L_eye_backup
+    100036: L_eye_backup2
+    100038: L_lidlower
+    100040: L_lidupper
+    100042: nose
+    100044: R_brow
+    100046: R_brow_backup
+    100048: R_ear
+    100050: R_ear_swirl
+    100052: R_eye
+    100054: R_eye_backup
+    100056: R_eye_backup2
+    100058: R_lidlower
+    100060: R_lidupper
+    400000: Background
+    400002: CINEMA_4D_Editor
+    400004: //RootNode
+    400006: convobot_ref1
+    400008: convobot_ref2
+    400010: EarSwirl_Sweep_backup
+    400012: hair_back
+    400014: hair_backup1
+    400016: hair_backup2
+    400018: hair_bowl
+    400020: head
+    400022: head_backup
+    400024: L_brow
+    400026: L_brow_backup
+    400028: L_ear
+    400030: L_ear_swirl
+    400032: L_eye
+    400034: L_eye_backup
+    400036: L_eye_backup2
+    400038: L_lidlower
+    400040: L_lidupper
+    400042: nose
+    400044: R_brow
+    400046: R_brow_backup
+    400048: R_ear
+    400050: R_ear_swirl
+    400052: R_eye
+    400054: R_eye_backup
+    400056: R_eye_backup2
+    400058: R_lidlower
+    400060: R_lidupper
+    2000000: CINEMA_4D_Editor
+    2100000: Lid
+    2100002: Skin
+    2100004: EarSwirl
+    2100006: No Name
+    2100008: Hair
+    2100010: White
+    2100012: Black
+    2300000: EarSwirl_Sweep_backup
+    2300002: hair_back
+    2300004: hair_backup1
+    2300006: hair_backup2
+    2300008: hair_bowl
+    2300010: head
+    2300012: head_backup
+    2300014: L_brow
+    2300016: L_brow_backup
+    2300018: L_ear
+    2300020: L_ear_swirl
+    2300022: L_eye
+    2300024: L_eye_backup
+    2300026: L_eye_backup2
+    2300028: L_lidlower
+    2300030: L_lidupper
+    2300032: nose
+    2300034: R_brow
+    2300036: R_brow_backup
+    2300038: R_ear
+    2300040: R_ear_swirl
+    2300042: R_eye
+    2300044: R_eye_backup
+    2300046: R_eye_backup2
+    2300048: R_lidlower
+    2300050: R_lidupper
+    3300000: EarSwirl_Sweep_backup
+    3300002: hair_back
+    3300004: hair_backup1
+    3300006: hair_backup2
+    3300008: hair_bowl
+    3300010: head
+    3300012: head_backup
+    3300014: L_brow
+    3300016: L_brow_backup
+    3300018: L_ear
+    3300020: L_ear_swirl
+    3300022: L_eye
+    3300024: L_eye_backup
+    3300026: L_eye_backup2
+    3300028: L_lidlower
+    3300030: L_lidupper
+    3300032: nose
+    3300034: R_brow
+    3300036: R_brow_backup
+    3300038: R_ear
+    3300040: R_ear_swirl
+    3300042: R_eye
+    3300044: R_eye_backup
+    3300046: R_eye_backup2
+    3300048: R_lidlower
+    3300050: R_lidupper
+    4300000: L_lidupper
+    4300002: L_lidlower
+    4300004: R_lidupper
+    4300006: R_lidlower
+    4300008: L_ear
+    4300010: L_ear_swirl
+    4300012: R_ear
+    4300014: R_ear_swirl
+    4300016: EarSwirl_Sweep_backup
+    4300018: hair_bowl
+    4300020: hair_back
+    4300022: L_brow
+    4300024: R_brow
+    4300026: nose
+    4300028: L_eye
+    4300030: R_eye
+    4300032: head
+    4300034: hair_backup1
+    4300036: hair_backup2
+    4300038: head_backup
+    4300040: L_eye_backup
+    4300042: R_eye_backup
+    4300044: L_brow_backup
+    4300046: R_brow_backup
+    4300048: L_eye_backup2
+    4300050: R_eye_backup2
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

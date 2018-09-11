@@ -1,0 +1,151 @@
+fileFormatVersion: 2
+guid: ec18bba9ed928a446811d6e6736d4629
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Capsule
+    100002: Capsule_1
+    100004: Capsule_2
+    100006: Capsule_3
+    100008: Capsule_4
+    100010: capsules
+    100012: CINEMA_4D_Editor
+    100014: //RootNode
+    100016: hair_back
+    100018: hair_bowl_back
+    100020: head_back
+    100022: wire_red
+    100024: wire_yellow
+    400000: Capsule
+    400002: Capsule_1
+    400004: Capsule_2
+    400006: Capsule_3
+    400008: Capsule_4
+    400010: capsules
+    400012: CINEMA_4D_Editor
+    400014: //RootNode
+    400016: hair_back
+    400018: hair_bowl_back
+    400020: head_back
+    400022: wire_red
+    400024: wire_yellow
+    2000000: CINEMA_4D_Editor
+    2100000: yellow
+    2100002: red
+    2100004: magenta
+    2100006: Black
+    2100008: Hair
+    2100010: Skin
+    2300000: Capsule
+    2300002: Capsule_1
+    2300004: Capsule_2
+    2300006: Capsule_3
+    2300008: Capsule_4
+    2300010: hair_back
+    2300012: hair_bowl_back
+    2300014: head_back
+    2300016: wire_red
+    2300018: wire_yellow
+    3300000: Capsule
+    3300002: Capsule_1
+    3300004: Capsule_2
+    3300006: Capsule_3
+    3300008: Capsule_4
+    3300010: hair_back
+    3300012: hair_bowl_back
+    3300014: head_back
+    3300016: wire_red
+    3300018: wire_yellow
+    4300000: wire_yellow
+    4300002: wire_red
+    4300004: Capsule_4
+    4300006: Capsule_3
+    4300008: Capsule_2
+    4300010: Capsule_1
+    4300012: Capsule
+    4300014: hair_bowl_back
+    4300016: hair_back
+    4300018: head_back
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
