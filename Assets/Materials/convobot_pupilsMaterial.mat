@@ -66,12 +66,12 @@ Material:
     - Boolean_351A9D5D: 0
     - Boolean_6891BC2F: 1
     - Boolean_CCE56147: 1
-    - Vector1_26802D95: 0
-    - Vector1_4B91735F: 0.18
+    - Vector1_26802D95: 0.01
+    - Vector1_4B91735F: 0.53
     - Vector1_6230D1A0: 0
     - Vector1_7898898E: 2.63
     - Vector1_C60380AD: 0
-    - Vector1_CD990E95: 1
+    - Vector1_CD990E95: 0
     - Vector1_E3A08C7D: 0.13
     - _AlphaClip: 0
     - _Blend: 0

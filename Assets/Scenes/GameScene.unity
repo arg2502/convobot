@@ -20,11 +20,11 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.4964127, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -148,14 +148,15 @@ MonoBehaviour:
   dialogWindow: {fileID: 1428412759}
   dialogText: {fileID: 355234703}
   robotCharacter: {fileID: 1973348282}
+  robotComponents: {fileID: 0}
   otherCharacter: {fileID: 1174989088}
   robotHatch: {fileID: 951330135}
   robotOriginalPosition: {x: -3.5, y: -1.2, z: 5.82}
   otherCharacterOriginalPosition: {x: 3.2, y: -3.1, z: -2.88}
-  robotZoomedPosition: {x: 2.5, y: -1.2, z: 0.1}
+  robotZoomedPosition: {x: 4, y: -1.2, z: 0.81}
   otherCharacterOffscreenPosition: {x: 17.9, y: -3.1, z: -2.88}
-  hatchOriginalPosition: {x: 2.32, y: 0.186, z: -0.55}
-  hatchOffPosition: {x: -4.01, y: 0.186, z: -0.55}
+  hatchOriginalPosition: {x: 3.75, y: 0.186, z: -0.55}
+  hatchOffPosition: {x: -3.5, y: 0.186, z: -0.55}
   timerWindow: {fileID: 143674965}
   timerText: {fileID: 308402081}
   timerCooldown: 30
@@ -237,8 +238,8 @@ Camera:
   m_GameObject: {fileID: 439301992}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.8113208, g: 0.8113208, b: 0.8113208, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -485,7 +486,7 @@ MeshFilter:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1041527723611102, guid: 86cae54651f25bb43a84f54808f332e8,
     type: 2}
-  m_PrefabInternal: {fileID: 1964499109}
+  m_PrefabInternal: {fileID: 1963029689}
 --- !u!1001 &1124834463
 Prefab:
   m_ObjectHideFlags: 0
@@ -709,7 +710,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 0.9680732, b: 0.881, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -718,7 +719,7 @@ Light:
     m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.107
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -750,7 +751,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1001 &1964499109
+--- !u!1001 &1963029689
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -759,7 +760,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4575395845404518, guid: 86cae54651f25bb43a84f54808f332e8, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -3.5
+      value: -3.9890292
       objectReference: {fileID: 0}
     - target: {fileID: 4575395845404518, guid: 86cae54651f25bb43a84f54808f332e8, type: 2}
       propertyPath: m_LocalPosition.y
@@ -767,7 +768,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4575395845404518, guid: 86cae54651f25bb43a84f54808f332e8, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 5.82
+      value: 5.740515
       objectReference: {fileID: 0}
     - target: {fileID: 4575395845404518, guid: 86cae54651f25bb43a84f54808f332e8, type: 2}
       propertyPath: m_LocalRotation.x
@@ -792,68 +793,8 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86cae54651f25bb43a84f54808f332e8, type: 2}
   m_IsPrefabAsset: 0
---- !u!114 &1964499110 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114362874300903456, guid: 86cae54651f25bb43a84f54808f332e8,
-    type: 2}
-  m_PrefabInternal: {fileID: 1964499109}
-  m_Script: {fileID: 11500000, guid: 799e3bf2f1a50364d96711ff2471ba54, type: 3}
---- !u!114 &1964499111 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114412477642243558, guid: 86cae54651f25bb43a84f54808f332e8,
-    type: 2}
-  m_PrefabInternal: {fileID: 1964499109}
-  m_Script: {fileID: 11500000, guid: d324e2a0178f27c4cb2b9b41fcc40df6, type: 3}
---- !u!114 &1964499112 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114590918332931864, guid: 86cae54651f25bb43a84f54808f332e8,
-    type: 2}
-  m_PrefabInternal: {fileID: 1964499109}
-  m_Script: {fileID: 11500000, guid: c522519c4a92ff74c93b23974f4fe682, type: 3}
---- !u!114 &1964499113 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114692620731527898, guid: 86cae54651f25bb43a84f54808f332e8,
-    type: 2}
-  m_PrefabInternal: {fileID: 1964499109}
-  m_Script: {fileID: 11500000, guid: 40ba9a8e8626efa47ba1444c2e473252, type: 3}
---- !u!114 &1964499114 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114746730739223308, guid: 86cae54651f25bb43a84f54808f332e8,
-    type: 2}
-  m_PrefabInternal: {fileID: 1964499109}
-  m_Script: {fileID: 11500000, guid: 8f619b9a8af15f64581ff09400ff4eea, type: 3}
---- !u!114 &1964499115 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114347776485518450, guid: 86cae54651f25bb43a84f54808f332e8,
-    type: 2}
-  m_PrefabInternal: {fileID: 1964499109}
-  m_Script: {fileID: 11500000, guid: 40ba9a8e8626efa47ba1444c2e473252, type: 3}
---- !u!114 &1964499116 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114133807680573888, guid: 86cae54651f25bb43a84f54808f332e8,
-    type: 2}
-  m_PrefabInternal: {fileID: 1964499109}
-  m_Script: {fileID: 11500000, guid: 8f619b9a8af15f64581ff09400ff4eea, type: 3}
 --- !u!1 &1973348282 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1048472596065274, guid: 86cae54651f25bb43a84f54808f332e8,
     type: 2}
-  m_PrefabInternal: {fileID: 1964499109}
---- !u!114 &1973348283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1973348282}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b6741116546ec84cbe67a996c1f136d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  robotRightEyebrow: {fileID: 1964499116}
-  robotRightEyelids: {fileID: 1964499115}
-  robotLeftEyebrow: {fileID: 1964499114}
-  robotLeftEyelids: {fileID: 1964499113}
-  robotMouthOpen: {fileID: 1964499112}
-  robotMouthSmile: {fileID: 1964499111}
-  robotSkinTone: {fileID: 1964499110}
+  m_PrefabInternal: {fileID: 1963029689}
