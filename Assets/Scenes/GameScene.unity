@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.4964127, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -798,3 +798,50 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1048472596065274, guid: 86cae54651f25bb43a84f54808f332e8,
     type: 2}
   m_PrefabInternal: {fileID: 1963029689}
+--- !u!114 &1973348288 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114566391504527900, guid: 86cae54651f25bb43a84f54808f332e8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1963029689}
+  m_Script: {fileID: 11500000, guid: 6b6741116546ec84cbe67a996c1f136d, type: 3}
+--- !u!1 &2060181244
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2060181246}
+  - component: {fileID: 2060181245}
+  m_Layer: 0
+  m_Name: ControlGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2060181245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2060181244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79a593a341feb0a468d54ed2bb533c7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentRobot: {fileID: 1973348288}
+--- !u!4 &2060181246
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2060181244}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

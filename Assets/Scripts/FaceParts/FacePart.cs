@@ -11,10 +11,11 @@ public class FacePart : MonoBehaviour {
     protected const float NEUTRAL = 0f;
 
     protected float value;
+    private bool assigned = false;
+    public bool Assigned { get { return assigned; } set { assigned = value; } }
 
     public void UpdateState(float _value) 
     {
         value = _value; 
     }
-    	
 }
