@@ -16,8 +16,24 @@ public class ControlGenerator : MonoBehaviour {
         CreateControls();
     }
 
+    void ShuffleArray(Transform[] array)
+    {
+        // Knuth (Fisher-Yates) shuffle algorithm
+        for(int i = 0; i < array.Length; i++)
+        {
+            var tmp = array[i];
+            var rnd = Random.Range(i, array.Length);
+            array[i] = array[rnd];
+            array[rnd] = tmp;
+        }
+    }
+
     void CreateControls()
     {
+        // randomize placeholder position order
+        ShuffleArray(currentRobot.PlaceholderPositions);
+
+        // loop through the positions and create a control at each spot
         for(int i = 0; i < currentRobot.PlaceholderPositions.Length; i++)
         {
             var controlObj = GameObject.Instantiate(controls[i], currentRobot.controlsParent.transform);
@@ -49,7 +65,8 @@ public class ControlGenerator : MonoBehaviour {
             // check to see if the list is empty, if it is, repopulate
             if (list.Count <= 0)
             {
-                list = new List<FacePart>(currentRobot.faceParts);
+                break;
+                //list = new List<FacePart>(currentRobot.faceParts);
             }
         }
     }

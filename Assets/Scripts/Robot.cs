@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Robot : MonoBehaviour
@@ -31,8 +32,14 @@ public class Robot : MonoBehaviour
 	
     Transform[] SetPlaceholders()
     {
-        if(placeholderPositions == null)
-            placeholderPositions = placeholderParent.GetComponentsInChildren<Transform>();
+        if (placeholderPositions == null)
+        {            
+            // get components in children also gets the parent
+            // this way ensures that the parent's transform is removed from the list
+            var list = new HashSet<Transform>(placeholderParent.GetComponentsInChildren<Transform>());
+            list.Remove(placeholderParent.transform);
+            placeholderPositions = list.ToArray();
+        }
 
         return placeholderPositions;
     }
