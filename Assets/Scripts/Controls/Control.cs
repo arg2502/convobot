@@ -53,4 +53,10 @@ public class Control : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
         facePart.UpdateState(value);
     }
 
+    public void AssignControl(FacePart fp)
+    {
+        facePart = fp;
+        facePart.Assigned = true;
+    }
+
 }

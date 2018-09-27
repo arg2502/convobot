@@ -12,15 +12,37 @@ public class Robot : MonoBehaviour
     public MouthSmile robotMouthSmile;
     public SkinTone robotSkinTone;
 
+    [System.NonSerialized]
+    public List<FacePart> faceParts;
 
-	// Use this for initialization
+    // get placeholder positions within each robot that can be easily altered in the editor
+    public GameObject controlsParent;
+    public GameObject placeholderParent;
+    Transform[] placeholderPositions;
+    public Transform[] PlaceholderPositions { get { return SetPlaceholders(); } }
+    
+
 	void Start ()
     {
-		
+        faceParts = new List<FacePart>() { robotLeftEyebrow, robotRightEyebrow, robotLeftEyelids, robotRightEyelids,
+        robotMouthOpen, robotMouthSmile, robotSkinTone};
+        SetPlaceholders();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    Transform[] SetPlaceholders()
+    {
+        if(placeholderPositions == null)
+            placeholderPositions = placeholderParent.GetComponentsInChildren<Transform>();
+
+        return placeholderPositions;
+    }
+
+    /// <summary>
+    /// When we don't need the placeholder position objects anymore, disable them.
+    /// </summary>
+    public void DisablePlaceholders()
+    {
+        foreach (var p in placeholderPositions)
+            p.gameObject.SetActive(false);
+    }
 }
