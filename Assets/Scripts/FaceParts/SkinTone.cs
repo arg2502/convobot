@@ -13,7 +13,7 @@ public class SkinTone : FacePart {
     void Start()
     {
         skinMat = GetComponentInChildren<MeshRenderer>();
-		originalColor = skinMat.material.GetColor("Color_7F25BDE6");
+		originalColor = skinMat.material.GetColor("_Color");
     }
 
     void Update()
@@ -26,10 +26,10 @@ public class SkinTone : FacePart {
     {
         // if positive, add red -- blushing, fury
         if (value >= 0)
-			skinMat.material.SetColor("Color_7F25BDE6", originalColor + new Color(value/2f, -value/2f, -value/2f));
+			skinMat.material.SetColor("_Color", originalColor + new Color(value/2f, -value/2f, -value/2f));
         // if negative, add white -- pale
         else
-			skinMat.material.SetColor("Color_7F25BDE6", originalColor + new Color(-value/2f, -value/2f, -value/2f));
+			skinMat.material.SetColor("_Color", originalColor + new Color(-value/2f, -value/2f, -value/2f));
     }
 
     void CheckState()

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: convobot_eyelidsMaterial
-  m_Shader: {fileID: 4800000, guid: cdb0b0f7eae864b4db7b2e24ec5f8b9a, type: 3}
+  m_Shader: {fileID: 4800000, guid: 4ddc6da96fd166a4f8c2e3652694f04e, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -62,6 +62,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_26802D95: 1
     - Vector1_4B91735F: 0
@@ -71,6 +75,7 @@ Material:
     - Vector1_CD990E95: 0
     - Vector1_E3A08C7D: 0.25
     - _AlphaClip: 0
+    - _Ambient: 2.09
     - _Blend: 0
     - _BumpScale: 1
     - _Cull: 2
@@ -83,16 +88,18 @@ Material:
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _Smoothness: 0.204
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
+    - _TextureOpacity: 0
     - _UVSec: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
     - Color_5DD84D1A: {r: 0.4666667, g: 0.27058825, b: 0.4666667, a: 1}
     - Color_7F25BDE6: {r: 0.75294125, g: 0.427451, b: 0.7372549, a: 1}
-    - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _Color: {r: 0.72156864, g: 0.45882356, b: 0.8431373, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
