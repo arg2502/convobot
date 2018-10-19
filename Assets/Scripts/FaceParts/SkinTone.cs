@@ -7,13 +7,14 @@ public class SkinTone : FacePart {
     MeshRenderer skinMat;
     Color originalColor;
 
-    public enum SkinState { NEUTRAL, PALE, BLUSHING, FURIOUS }
+    public enum SkinState { NEUTRAL, PALE, BLUSHING, FURIOUS, _COUNT }
     public SkinState skinState;
 
     void Start()
     {
         skinMat = GetComponentInChildren<MeshRenderer>();
 		originalColor = skinMat.material.GetColor("_Color");
+        numOfStates = (int)SkinState._COUNT;
     }
 
     void Update()

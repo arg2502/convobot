@@ -8,18 +8,35 @@ public class ControlGenerator : MonoBehaviour {
     public Robot currentRobot;
     List<Control> currentControls;
 
+    List<Control> currentSwitches;
+    List<Control> currentRest;
+
     private void Start()
     {
         controls = Resources.LoadAll<GameObject>("ControlObjects");
         currentControls = new List<Control>();
-        
+        currentSwitches = new List<Control>();
+        currentRest = new List<Control>();
+
         CreateControls();
     }
 
-    void ShuffleArray(Transform[] array)
+    void ShuffleArray<T>(List<T> array)
     {
         // Knuth (Fisher-Yates) shuffle algorithm
-        for(int i = 0; i < array.Length; i++)
+        for(int i = 0; i < array.Count; i++)
+        {
+            var tmp = array[i];
+            var rnd = Random.Range(i, array.Count);
+            array[i] = array[rnd];
+            array[rnd] = tmp;
+        }
+    }
+    
+    void ShuffleArray<T>(T[] array)
+    {
+        // Knuth (Fisher-Yates) shuffle algorithm
+        for (int i = 0; i < array.Length; i++)
         {
             var tmp = array[i];
             var rnd = Random.Range(i, array.Length);
@@ -30,44 +47,96 @@ public class ControlGenerator : MonoBehaviour {
 
     void CreateControls()
     {
+        // shuffle controls so it's a random assortment everytime
+        ShuffleArray(controls);
+
+        // find out the max num of switches we can have
+        int maxSwitches = 0;
+        for(int i = 0; i < currentRobot.faceParts.Count; i++)
+        {
+            if (currentRobot.faceParts[i].NumOfStates == 3)
+                maxSwitches++;
+        }
+
+        // Now that we have the max number of switches, let's create 2 separate lists for controls:
+        // One for strictly switches; One for all the rest.
+        // We'll also remove any excess switches so that we'll only have the amount that we need.
+        var switchList = new List<GameObject>();
+        var restList = new List<GameObject>();
+        for(int i = 0; i < currentRobot.faceParts.Count; i++)
+        {
+            if(controls[i].GetComponent<Switch>() && switchList.Count < maxSwitches)
+            {
+                switchList.Add(controls[i]);
+            }
+            else
+            { 
+                restList.Add(controls[i]);
+            }
+        }
+
         // randomize placeholder position order
         ShuffleArray(currentRobot.PlaceholderPositions);
 
-        // loop through the positions and create a control at each spot
-        for(int i = 0; i < currentRobot.PlaceholderPositions.Length; i++)
+        // Now that we know exactly how many switches we need, we'll create those first
+        // Let's pick random placeholderPositions, create the switches there, 
+        // then remove those positions as options when we go to create the rest of the controls
+        foreach(var s in switchList)
         {
-            var controlObj = GameObject.Instantiate(controls[i], currentRobot.controlsParent.transform);
+            // create obj
+            var controlObj = GameObject.Instantiate(s, currentRobot.controlsParent.transform);
+
+            // find random pos and place it there
+            var rnd = Random.Range(0, currentRobot.PlaceholderPositions.Count);
+            controlObj.transform.position = currentRobot.PlaceholderPositions[rnd].transform.position;
+
+            // add control to current list
+            var control = controlObj.GetComponentInChildren<Control>();
+            currentControls.Add(control);
+            currentSwitches.Add(control);
+
+            // disable object and remove that position from consideration of other placements
+            currentRobot.PlaceholderPositions[rnd].gameObject.SetActive(false);
+            currentRobot.PlaceholderPositions.RemoveAt(rnd);
+        }
+
+        // now loop throught the rest of the placeholder positions and create the rest of the controls   
+        for (int i = 0; i < currentRobot.PlaceholderPositions.Count; i++)
+        {
+            var controlObj = GameObject.Instantiate(restList[i], currentRobot.controlsParent.transform);
             controlObj.transform.position = currentRobot.PlaceholderPositions[i].transform.position;
 
             var control = controlObj.GetComponentInChildren<Control>();
             currentControls.Add(control);
+            currentRest.Add(control);
         }
         currentRobot.DisablePlaceholders();
         AssignControls();
     }
 
     void AssignControls()
-    {
-        // local list that we can manipulate
-        var list = new List<FacePart>(currentRobot.faceParts);
-
-        foreach(var c in currentControls)
+    {        
+        // loop through faceparts and assign controls appropriately
+        // if we come in contact with a 3-state facepart, check if we have any switches left to assign,
+        // otherwise, any control will do
+        foreach(var fp in currentRobot.faceParts)
         {
-            // pick a random face part
-            var rnd = Random.Range(0, list.Count);
-            var fp = list[rnd];            
-
-            c.AssignControl(fp);
-
-            // remove that facepart from our local list to ensure that each face part is given a control
-            list.Remove(fp);
-
-            // check to see if the list is empty, if it is, repopulate
-            if (list.Count <= 0)
+            int rnd = 0;
+            if(fp.NumOfStates == 3 && currentSwitches.Count > 0)
             {
-                break;
-                //list = new List<FacePart>(currentRobot.faceParts);
+                // get random switch
+                rnd = Random.Range(0, currentSwitches.Count);
+                currentSwitches[rnd].GetComponent<Control>().AssignControl(fp);
+
+                currentSwitches.RemoveAt(rnd);
+                continue;            
             }
+
+            rnd = Random.Range(0, currentRest.Count);
+            
+            currentRest[rnd].GetComponentInChildren<Control>().AssignControl(fp);
+
+            currentRest.RemoveAt(rnd);
         }
     }
 }

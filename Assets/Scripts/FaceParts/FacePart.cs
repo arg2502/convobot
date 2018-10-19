@@ -14,6 +14,10 @@ public class FacePart : MonoBehaviour {
     private bool assigned = false;
     public bool Assigned { get { return assigned; } set { assigned = value; } }
 
+    // keep track of how many states each part has
+    protected int numOfStates;
+    public int NumOfStates { get { return numOfStates; } }
+
     public void UpdateState(float _value) 
     {
         value = _value; 

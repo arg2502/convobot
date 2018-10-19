@@ -6,12 +6,13 @@ public class MouthOpen : FacePart {
 
     SkinnedMeshRenderer smr;
 
-    public enum MouthOpenState { CLOSED, AJAR, OPEN }
+    public enum MouthOpenState { CLOSED, AJAR, OPEN, _COUNT }
     public MouthOpenState mouthOpenState;
     
     void Start ()
     {
         smr = GetComponentInChildren<SkinnedMeshRenderer>();
+        numOfStates = (int)MouthOpenState._COUNT;
     }
 		
 	void Update ()

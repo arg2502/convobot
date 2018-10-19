@@ -6,12 +6,13 @@ public class MouthSmile : FacePart {
 
     SkinnedMeshRenderer smr;
 
-    public enum MouthSmileState { NEUTRAL, FROWN, SLIGHTFROWN, SMIRK, SMILE }
+    public enum MouthSmileState { NEUTRAL, FROWN, SLIGHTFROWN, SMIRK, SMILE, _COUNT }
     public MouthSmileState mouthSmileState;
 
     void Start()
     {
         smr = GetComponentInChildren<SkinnedMeshRenderer>();
+        numOfStates = (int)MouthSmileState._COUNT;
     }
 
     void Update()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Eyebrow : FacePart {
 
-    public enum EyebrowState { NEUTRAL, LOWERED, RAISED }
+    public enum EyebrowState { NEUTRAL, LOWERED, RAISED, _COUNT }
     public EyebrowState eyebrowState;
 
     public enum WhichEyebrow { LEFT, RIGHT }
@@ -19,6 +19,7 @@ public class Eyebrow : FacePart {
     void Start()
     {
         originalZRot = transform.rotation.z;
+        numOfStates = (int)EyebrowState._COUNT;
     }
 
 	void Update()

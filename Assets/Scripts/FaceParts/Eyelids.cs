@@ -13,25 +13,12 @@ public class Eyelids : FacePart {
     //float closedPos = 0.5f;
     //float middleYPos;
 
-    public enum EyelidState { OPEN, SQUINTING, CLOSED }
+    public enum EyelidState { OPEN, SQUINTING, CLOSED, _COUNT }
     public EyelidState eyelidState;
 
-	void Start () {
-        //openPos = upperlid.transform.localPosition.y;
-
-        //// set eyelids to halfway
-        //var middle = (openPos + closedPos) / 2f;
-
-        //var newUpper = upperlid.transform.localPosition;
-        //newUpper.y = middle;
-        //upperlid.transform.localPosition = newUpper;
-        //newUpper.y *= -1;
-        //lowerlid.transform.localPosition = newUpper;
-
-        //middleYPos = upperlid.transform.localPosition.y;
-
+	void Start () {       
         animator = GetComponent<Animator>();
-
+        numOfStates = (int)EyelidState._COUNT;
 	}
 	
 	// Update is called once per frame

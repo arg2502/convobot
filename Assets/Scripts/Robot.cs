@@ -19,8 +19,8 @@ public class Robot : MonoBehaviour
     // get placeholder positions within each robot that can be easily altered in the editor
     public GameObject controlsParent;
     public GameObject placeholderParent;
-    Transform[] placeholderPositions;
-    public Transform[] PlaceholderPositions { get { return SetPlaceholders(); } }
+    List<Transform> placeholderPositions;
+    public List<Transform> PlaceholderPositions { get { return SetPlaceholders(); } }
     
 
 	void Start ()
@@ -30,7 +30,7 @@ public class Robot : MonoBehaviour
         SetPlaceholders();
 	}
 	
-    Transform[] SetPlaceholders()
+    List<Transform> SetPlaceholders()
     {
         if (placeholderPositions == null)
         {            
@@ -38,7 +38,7 @@ public class Robot : MonoBehaviour
             // this way ensures that the parent's transform is removed from the list
             var list = new HashSet<Transform>(placeholderParent.GetComponentsInChildren<Transform>());
             list.Remove(placeholderParent.transform);
-            placeholderPositions = list.ToArray();
+            placeholderPositions = list.ToList();
         }
 
         return placeholderPositions;
