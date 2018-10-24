@@ -62,6 +62,8 @@ public class GameController : MonoBehaviour
     bool isCorrect = false;
     public int chances = 3;
     public List<LevelData> levelDatas;
+    public ControlGenerator controlGenerator;
+
     void Start ()
     {
         robotComponents = robotCharacter.GetComponent<Robot>();
@@ -220,11 +222,12 @@ public class GameController : MonoBehaviour
     {
         yield return StartCoroutine(MoveOtherPersonAway());
         yield return StartCoroutine(MoveRobotUp());
-        hatchOffPosition.y = robotHatch.transform.position.y;
-        hatchOffPosition.z = robotHatch.transform.position.z;
-        hatchOriginalPosition.y = robotHatch.transform.position.y;
-        hatchOriginalPosition.z = robotHatch.transform.position.z;
-        yield return StartCoroutine(MoveHatchOff());
+        //hatchOffPosition.y = robotHatch.transform.position.y;
+        //hatchOffPosition.z = robotHatch.transform.position.z;
+        //hatchOriginalPosition.y = robotHatch.transform.position.y;
+        //hatchOriginalPosition.z = robotHatch.transform.position.z;
+        //yield return StartCoroutine(MoveHatchOff());
+        controlGenerator.ToggleControls(activate: true);
         ChangeStage(GameStages.FacialAdjustmentStage);
     }
 
@@ -299,7 +302,8 @@ public class GameController : MonoBehaviour
 
     IEnumerator MoveToConversation()
     {
-        yield return StartCoroutine(MoveHatchOn());
+        controlGenerator.ToggleControls(activate : false);
+        //yield return StartCoroutine(MoveHatchOn());
         yield return StartCoroutine(MoveRobotBack());
         yield return StartCoroutine(MoveOtherPersonBack());
         ChangeStage(GameStages.ResolveScoringStage);
@@ -913,4 +917,5 @@ public class GameController : MonoBehaviour
     {
         //Handles any updates needed for the End stage
     }
+
 }
