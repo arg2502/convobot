@@ -6,7 +6,7 @@ public class ControlGenerator : MonoBehaviour {
 
     GameObject[] controls;
     public Robot currentRobot;
-    List<Control> currentControls;
+    List<GameObject> currentControlsObj;
 
     List<Control> currentSwitches;
     List<Control> currentRest;
@@ -14,7 +14,7 @@ public class ControlGenerator : MonoBehaviour {
     private void Start()
     {
         controls = Resources.LoadAll<GameObject>("ControlObjects");
-        currentControls = new List<Control>();
+        currentControlsObj = new List<GameObject>();
         currentSwitches = new List<Control>();
         currentRest = new List<Control>();
 
@@ -85,6 +85,7 @@ public class ControlGenerator : MonoBehaviour {
         {
             // create obj
             var controlObj = GameObject.Instantiate(s, currentRobot.controlsParent.transform);
+            currentControlsObj.Add(controlObj);
 
             // find random pos and place it there
             var rnd = Random.Range(0, currentRobot.PlaceholderPositions.Count);
@@ -92,7 +93,6 @@ public class ControlGenerator : MonoBehaviour {
 
             // add control to current list
             var control = controlObj.GetComponentInChildren<Control>();
-            currentControls.Add(control);
             currentSwitches.Add(control);
 
             // disable object and remove that position from consideration of other placements
@@ -104,10 +104,10 @@ public class ControlGenerator : MonoBehaviour {
         for (int i = 0; i < currentRobot.PlaceholderPositions.Count; i++)
         {
             var controlObj = GameObject.Instantiate(restList[i], currentRobot.controlsParent.transform);
+            currentControlsObj.Add(controlObj);
             controlObj.transform.position = currentRobot.PlaceholderPositions[i].transform.position;
 
             var control = controlObj.GetComponentInChildren<Control>();
-            currentControls.Add(control);
             currentRest.Add(control);
         }
         currentRobot.DisablePlaceholders();
@@ -137,6 +137,18 @@ public class ControlGenerator : MonoBehaviour {
             currentRest[rnd].GetComponentInChildren<Control>().AssignControl(fp);
 
             currentRest.RemoveAt(rnd);
+        }
+
+        ToggleControls(false);
+    }
+
+
+    // temporary function
+    public void ToggleControls(bool activate)
+    {
+        foreach (var control in currentControlsObj)
+        {
+            control.gameObject.SetActive(activate);
         }
     }
 }
