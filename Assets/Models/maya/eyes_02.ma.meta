@@ -1,16 +1,8 @@
 fileFormatVersion: 2
-guid: 747c59d297d06404dafe83144ddaee47
+guid: 4cd456c8362ec9c47ac30e825b5c9dd6
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: tooth
-    2100002: mouth
-    2100004: lips
-    4300000: Mouth
-    9500000: //RootNode
-    13700000: //RootNode
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
@@ -64,11 +56,11 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
     previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
-    normalSmoothAngle: 180
+    normalSmoothAngle: 60
     normalImportMode: 0
-    tangentImportMode: 0
+    tangentImportMode: 3
     normalCalculationMode: 4
   importAnimation: 1
   copyAvatar: 0
