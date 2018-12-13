@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
@@ -63,6 +64,9 @@ public class GameController : MonoBehaviour
     public int chances = 3;
     public List<LevelData> levelDatas;
     public ControlGenerator controlGenerator;
+    public PlayableDirector timeline;
+    public PlayableAsset zoomIn;
+    public PlayableAsset zoomOut;
 
     void Start ()
     {
@@ -220,8 +224,9 @@ public class GameController : MonoBehaviour
 
     IEnumerator MoveToFacialAdjustment()
     {
-        yield return StartCoroutine(MoveOtherPersonAway());
-        yield return StartCoroutine(MoveRobotUp());
+        timeline.playableAsset = zoomIn;
+        timeline.Play();
+        yield return new WaitForSeconds(2.0f);
         //hatchOffPosition.y = robotHatch.transform.position.y;
         //hatchOffPosition.z = robotHatch.transform.position.z;
         //hatchOriginalPosition.y = robotHatch.transform.position.y;
@@ -229,24 +234,6 @@ public class GameController : MonoBehaviour
         //yield return StartCoroutine(MoveHatchOff());
         controlGenerator.ToggleControls(activate: true);
         ChangeStage(GameStages.FacialAdjustmentStage);
-    }
-
-    IEnumerator MoveOtherPersonAway()
-    {
-        while (Vector3.Distance(otherCharacter.transform.position, otherCharacterOffscreenPosition) > 0.5f)
-        {
-            otherCharacter.transform.position = Vector3.MoveTowards(otherCharacter.transform.position, otherCharacterOffscreenPosition, 5 * Time.deltaTime);
-            yield return null;
-        }
-    }
-
-    IEnumerator MoveRobotUp()
-    {
-        while (Vector3.Distance(robotCharacter.transform.position, robotZoomedPosition) > 0.5f)
-        {
-            robotCharacter.transform.position = Vector3.MoveTowards(robotCharacter.transform.position, robotZoomedPosition, 5 * Time.deltaTime);
-            yield return null;
-        }
     }
 
     IEnumerator MoveHatchOff()
@@ -257,8 +244,6 @@ public class GameController : MonoBehaviour
             yield return null;
         }
     }
-
-
 
     void UpdateMoveToFacialAdjustmentStage()
     {
@@ -303,9 +288,9 @@ public class GameController : MonoBehaviour
     IEnumerator MoveToConversation()
     {
         controlGenerator.ToggleControls(activate : false);
-        //yield return StartCoroutine(MoveHatchOn());
-        yield return StartCoroutine(MoveRobotBack());
-        yield return StartCoroutine(MoveOtherPersonBack());
+        timeline.playableAsset = zoomOut;
+        timeline.Play();
+        yield return new WaitForSeconds(2.0f);
         ChangeStage(GameStages.ResolveScoringStage);
     }
 
