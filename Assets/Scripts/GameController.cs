@@ -67,6 +67,7 @@ public class GameController : MonoBehaviour
     public PlayableDirector timeline;
     public PlayableAsset zoomIn;
     public PlayableAsset zoomOut;
+    public int levelNumber = 1;
 
     void Start ()
     {
@@ -891,11 +892,28 @@ public class GameController : MonoBehaviour
     IEnumerator LoseSequence()
     {
         resultText.gameObject.SetActive(true);
-        resultText.text = "YOUR A ROBOT!!!!!";
+        resultText.text = "YOU'RE A ROBOT!!!!!";
         resultText.color = new Color32(248, 8, 8, 255);
         yield return new WaitForSeconds(5);
         resultText.gameObject.SetActive(false);
         SceneManager.LoadScene("PlayScene");
+    }
+
+    void SetLevelWin(bool didWin)
+    {
+        int didYouWin = (didWin) ? 1 : 0;
+
+        switch(levelNumber)
+        {
+            case 1:
+            {
+                if(PlayerPrefs.HasKey("Level1Complete"))
+                {
+                    PlayerPrefs.SetInt("Level1Complete", didYouWin);
+                }
+                break;
+            }
+        }
     }
 
     void UpdateEndStage()
