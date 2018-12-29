@@ -18,6 +18,7 @@ public class Robot : MonoBehaviour
 
     // get placeholder positions within each robot that can be easily altered in the editor
     public GameObject controlsParent;
+    public ConnectorController connectorController;
     public GameObject placeholderParent;
     List<Transform> placeholderPositions;
     public List<Transform> PlaceholderPositions { get { return SetPlaceholders(); } }

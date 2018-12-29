@@ -12,21 +12,23 @@ public class ConnectorController : MonoBehaviour {
 	public float positionAdjustStrength = 0.01f;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		if(Input.GetKey(KeyCode.S))
-		{
-			OpenControls ();
-		}
+	void Update () 
+	{
+		// if(Input.GetKey(KeyCode.S))
+		// {
+		// 	OpenControls ();
+		// }
 
-		if(Input.GetKey(KeyCode.A))
-		{
-			CloseControls ();
-		}
+		// if(Input.GetKey(KeyCode.A))
+		// {
+		// 	CloseControls ();
+		// }
 	}
 
 	public void OpenControls()
@@ -43,5 +45,14 @@ public class ConnectorController : MonoBehaviour {
 		{
 			connector.Close(transitionSpeed * Random.Range (1 - randomThreshold, 1 + randomThreshold));
 		}
+	}
+
+	public void StoreControlObject(GameObject objectToStore, int index)
+	{
+		Transform objectTransform = objectToStore.GetComponent<Transform>();
+		Connector thisConnector = connectorArray[index];
+
+		thisConnector.endObjectTransform = objectTransform;
+		thisConnector.UpdateStoredTransform();
 	}
 }

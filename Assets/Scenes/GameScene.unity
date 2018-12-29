@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.4964127, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -828,6 +828,7 @@ MonoBehaviour:
     - When life gives you lemons throw the lemons back at life
     emotion: 4
   controlGenerator: {fileID: 2060181245}
+  connectorController: {fileID: 1696699337}
   timeline: {fileID: 1967522378}
   zoomIn: {fileID: 11400000, guid: 49877a86bf7e94440a7c9e8375444a31, type: 2}
   zoomOut: {fileID: 11400000, guid: 4b1b110587aac08409dce3df45361c53, type: 2}
@@ -7555,7 +7556,7 @@ GameObject:
   - component: {fileID: 1696699336}
   - component: {fileID: 1696699337}
   m_Layer: 0
-  m_Name: Connectors
+  m_Name: ConnectorController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7602,7 +7603,7 @@ MonoBehaviour:
   - {fileID: 992141930}
   transitionSpeed: 3
   randomThreshold: 0.1
-  positionAdjustStrength: 0.01
+  positionAdjustStrength: 0.05
 --- !u!1001 &1699926970
 Prefab:
   m_ObjectHideFlags: 0
@@ -8222,7 +8223,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4341286125390648, guid: 86cae54651f25bb43a84f54808f332e8, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.596
+      value: 0.663
       objectReference: {fileID: 0}
     - target: {fileID: 4341286125390648, guid: 86cae54651f25bb43a84f54808f332e8, type: 2}
       propertyPath: m_LocalPosition.y
@@ -8230,7 +8231,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4970782568910724, guid: 86cae54651f25bb43a84f54808f332e8, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.748
+      value: 0.875
       objectReference: {fileID: 0}
     - target: {fileID: 4970782568910724, guid: 86cae54651f25bb43a84f54808f332e8, type: 2}
       propertyPath: m_LocalPosition.y
@@ -8547,7 +8548,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4172490587829892, guid: 86cae54651f25bb43a84f54808f332e8, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4553004270436950, guid: 86cae54651f25bb43a84f54808f332e8, type: 2}
       propertyPath: m_RootOrder
@@ -8600,6 +8601,11 @@ Prefab:
       propertyPath: robotLeftEyelids
       value: 
       objectReference: {fileID: 1990505656}
+    - target: {fileID: 114566391504527900, guid: 86cae54651f25bb43a84f54808f332e8,
+        type: 2}
+      propertyPath: connectorController
+      value: 
+      objectReference: {fileID: 1696699337}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86cae54651f25bb43a84f54808f332e8, type: 2}
   m_IsPrefabAsset: 0

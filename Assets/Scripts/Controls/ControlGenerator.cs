@@ -91,6 +91,9 @@ public class ControlGenerator : MonoBehaviour {
             var rnd = Random.Range(0, currentRobot.PlaceholderPositions.Count);
             controlObj.transform.position = currentRobot.PlaceholderPositions[rnd].transform.position;
 
+            // store object reference in connector at this position
+            AssignConnector(controlObj, currentRobot.PlaceholderPositions[rnd].gameObject);
+
             // add control to current list
             var control = controlObj.GetComponentInChildren<Control>();
             currentSwitches.Add(control);
@@ -106,6 +109,9 @@ public class ControlGenerator : MonoBehaviour {
             var controlObj = GameObject.Instantiate(restList[i], currentRobot.controlsParent.transform);
             currentControlsObj.Add(controlObj);
             controlObj.transform.position = currentRobot.PlaceholderPositions[i].transform.position;
+
+            // store object reference in connector at this position
+            AssignConnector(controlObj, currentRobot.PlaceholderPositions[i].gameObject);
 
             var control = controlObj.GetComponentInChildren<Control>();
             currentRest.Add(control);
@@ -142,6 +148,15 @@ public class ControlGenerator : MonoBehaviour {
         ToggleControls(false);
     }
 
+    void AssignConnector(GameObject controlObject, GameObject placeholderObject)
+    {
+        string positionName = placeholderObject.name;
+        string positionNumber =  positionName.Substring(positionName.Length-1, 1);
+
+        int positionInt = int.Parse(positionNumber);
+            
+        currentRobot.connectorController.StoreControlObject(controlObject, positionInt-1);
+    }
 
     // temporary function
     public void ToggleControls(bool activate)

@@ -64,6 +64,7 @@ public class GameController : MonoBehaviour
     public int chances = 3;
     public List<LevelData> levelDatas;
     public ControlGenerator controlGenerator;
+    public ConnectorController connectorController;
     public PlayableDirector timeline;
     public PlayableAsset zoomIn;
     public PlayableAsset zoomOut;
@@ -234,6 +235,7 @@ public class GameController : MonoBehaviour
         //hatchOriginalPosition.z = robotHatch.transform.position.z;
         //yield return StartCoroutine(MoveHatchOff());
         controlGenerator.ToggleControls(activate: true);
+        connectorController.OpenControls();
         ChangeStage(GameStages.FacialAdjustmentStage);
     }
 
@@ -288,6 +290,8 @@ public class GameController : MonoBehaviour
 
     IEnumerator MoveToConversation()
     {
+        connectorController.CloseControls();
+        yield return new WaitForSeconds(1f / connectorController.transitionSpeed);
         controlGenerator.ToggleControls(activate : false);
         timeline.playableAsset = zoomOut;
         timeline.Play();

@@ -7,23 +7,21 @@ public class Connector : MonoBehaviour {
 	public Transform goalGizmoTransform;
 	public Transform connectorEndTransform;
 
+	public Transform endObjectTransform;
+
 	private Animator animator;
 
 	private Transform thisTransform;
 	private Vector3 gizmoPosition;
 	private Vector3 endPosition;
-	//private Vector3 defaultPosition;
+	private float endPositionZOffset = -0.1f;
 
 	private bool isTransitioning = false;
-	private Quaternion connectorEndRotation;
 
 	// Use this for initialization
 	void Start () {
 		animator = GetComponentInChildren<Animator> ();
 		thisTransform = GetComponent<Transform> ();
-		//defaultPosition = this.gameObject.transform.position;
-
-		connectorEndRotation = connectorEndTransform.rotation;
 
 		this.gameObject.SetActive (false);
 	}
@@ -32,8 +30,7 @@ public class Connector : MonoBehaviour {
 	void Update () {
 		if(isTransitioning)
 		{
-			connectorEndTransform.rotation = connectorEndRotation;
-			//Debug.Log ("rotation after change is: " + connectorEndTransform.rotation.ToString ());
+			UpdateStoredTransform();
 		}
 	}
 
@@ -43,6 +40,7 @@ public class Connector : MonoBehaviour {
 
 		animator.speed = speed;
 		animator.Play("ConnectorOpening1");
+		isTransitioning = true;
 
 		StartCoroutine (AdjustPosition(connectorEndTransform, goalGizmoTransform, thisTransform, 1f / speed, transitionStep));
 	}
@@ -51,14 +49,25 @@ public class Connector : MonoBehaviour {
 	{
 		animator.speed = speed;
 		animator.Play("ConnectorClosing1");
+		isTransitioning = true;
 
 		Invoke ("HideMe", 1 / speed);
 	}
 
+	public void UpdateStoredTransform()
+	{
+        if (endObjectTransform != null)
+        {
+			float newX = connectorEndTransform.position.x;
+			float newY = connectorEndTransform.position.y;
+			float newZ = connectorEndTransform.position.z + endPositionZOffset;
+
+            endObjectTransform.position = new Vector3(newX, newY, newZ);
+        }
+    }
+
 	private IEnumerator AdjustPosition(Transform targetTransform, Transform goalTransform, Transform transformToAdjust, float duration, float step)
 	{
-		isTransitioning = true;
-
 		yield return new WaitForSeconds(duration * 0.75f);
 
 		float elapsedTime = 0f;
@@ -115,5 +124,6 @@ public class Connector : MonoBehaviour {
 	private void HideMe()
 	{
 		this.gameObject.SetActive(false);
+		isTransitioning = false;
 	}
 }
