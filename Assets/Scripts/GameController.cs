@@ -221,6 +221,7 @@ public class GameController : MonoBehaviour
 
     void StartMoveToFacialAdjustmentStage()
     {
+        AudioManager.instance.StartRobotMusic();
         StartCoroutine(MoveToFacialAdjustment());
     }
 
@@ -280,6 +281,7 @@ public class GameController : MonoBehaviour
     void StartMoveToConversationStage()
     {
         timerWindow.SetActive(false);
+        AudioManager.instance.StopRobotMusic();
         StartCoroutine(MoveToConversation());
     }
 
