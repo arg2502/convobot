@@ -20,6 +20,7 @@ public class AudioManager : MonoBehaviour {
 
     void Start () {
         robotBG.volume = 0f;
+        mainBG.volume = 1f;
 
         mainBG.Play();
         robotBG.Play();
@@ -41,9 +42,11 @@ public class AudioManager : MonoBehaviour {
         while(robotBG.volume < 1)
         {
             robotBG.volume += fadeRate * Time.deltaTime;
+            mainBG.volume -= fadeRate * Time.deltaTime;
             yield return null;
         }
         robotBG.volume = 1;
+        mainBG.volume = 0;
     }
 
     IEnumerator StopRobot()
@@ -51,9 +54,11 @@ public class AudioManager : MonoBehaviour {
         while(robotBG.volume > 0)
         {
             robotBG.volume -= fadeRate * Time.deltaTime;
+            mainBG.volume += fadeRate * Time.deltaTime;
             yield return null;
         }
         robotBG.volume = 0;
+        mainBG.volume = 1;
     }
 
 }
