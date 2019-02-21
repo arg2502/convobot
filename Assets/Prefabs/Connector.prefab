@@ -205,7 +205,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 0fb54735013bca6429424776017b612b, type: 3}
+  - {fileID: 2100000, guid: 99b586cf84efb7a4cb527286c3772c60, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -240,7 +240,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 0fb54735013bca6429424776017b612b, type: 3}
+  - {fileID: 2100000, guid: 99b586cf84efb7a4cb527286c3772c60, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -305,3 +305,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goalGizmoTransform: {fileID: 0}
   connectorEndTransform: {fileID: 4380727138203282}
+  endObjectTransform: {fileID: 0}
