@@ -891,6 +891,7 @@ public class GameController : MonoBehaviour
         resultText.text = "Success!";
         resultText.color = new Color32(20, 106, 20, 255);
         yield return new WaitForSeconds(5);
+        SetLevelWin(true);
         resultText.gameObject.SetActive(false);
         SceneManager.LoadScene("PlayScene");
     }
@@ -901,6 +902,7 @@ public class GameController : MonoBehaviour
         resultText.text = "YOU'RE A ROBOT!!!!!";
         resultText.color = new Color32(248, 8, 8, 255);
         yield return new WaitForSeconds(5);
+        SetLevelWin(false);
         resultText.gameObject.SetActive(false);
         SceneManager.LoadScene("PlayScene");
     }
@@ -916,6 +918,14 @@ public class GameController : MonoBehaviour
                 if(PlayerPrefs.HasKey("Level1Complete"))
                 {
                     PlayerPrefs.SetInt("Level1Complete", didYouWin);
+                }
+
+                if (chances >= 3)
+                {
+                    if (PlayerPrefs.HasKey("Level1Perfect"))
+                    {
+                        PlayerPrefs.SetInt("Level1Perfect", 1);
+                    }
                 }
                 break;
             }
