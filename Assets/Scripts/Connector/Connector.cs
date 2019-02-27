@@ -14,7 +14,7 @@ public class Connector : MonoBehaviour {
 	private Transform thisTransform;
 	private Vector3 gizmoPosition;
 	private Vector3 endPosition;
-	private float endPositionZOffset = -0.1f;
+	private float endPositionZOffset = -0.2f;
 
 	private bool isTransitioning = false;
 
