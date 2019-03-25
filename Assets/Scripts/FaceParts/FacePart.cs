@@ -11,6 +11,7 @@ public class FacePart : MonoBehaviour {
     protected const float NEUTRAL = 0f;
 
     protected float value;
+    float prevValue;
     private bool assigned = false;
     public bool Assigned { get { return assigned; } set { assigned = value; } }
 
@@ -20,6 +21,13 @@ public class FacePart : MonoBehaviour {
 
     public void UpdateState(float _value) 
     {
-        value = _value; 
+        prevValue = (Mathf.Round(value * 10f) / 10f);
+        value = _value;
+        //if (prevValue != (Mathf.Round(value * 10f) / 10f))
+        //    AudioManager.instance.PlaySFX();
+        //value = (Mathf.Round(_value * 10f) / 10f);
+        float roundedValue = (Mathf.Round(_value * 10f) / 10f);
+        if (prevValue != roundedValue)
+            AudioManager.instance.PlaySFX();
     }
 }
