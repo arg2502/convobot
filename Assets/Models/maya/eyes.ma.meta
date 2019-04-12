@@ -2,7 +2,8 @@ fileFormatVersion: 2
 guid: 641b4a4aa8c1de14687723490876cfc1
 ModelImporter:
   serializedVersion: 23
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
     importMaterials: 1
