@@ -437,6 +437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facePart: {fileID: 0}
+  sfx: {fileID: 8300000, guid: d6881541d55fbe648a5699f8a17282cd, type: 3}
   modelSlide: {fileID: 1268571262280828}
 --- !u!114 &114170375496193796
 MonoBehaviour:

@@ -10,10 +10,7 @@ public class AudioManager : MonoBehaviour {
     float fadeRate = 1f;
 
     public static AudioManager instance;
-
-    // SFX
-    public AudioClip testSFX;
-
+    
     private void Awake()
     {
         if (instance == null)
@@ -69,8 +66,9 @@ public class AudioManager : MonoBehaviour {
     public void PlaySFX(AudioClip clip = null, bool randomPitch = true)
     {
         // TEMP FOR TESTING
-        if (clip == null)
-            clip = testSFX;
+        //if (clip == null)
+        //  clip = testSFX;
+        if (clip == null) return;
 
         var pitchRandom = 1f;
         if (randomPitch)

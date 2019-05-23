@@ -13,6 +13,7 @@ public class Control : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
 
     // corresponding part that is affected by the control -- assigned in inspector
     public FacePart facePart;
+    public AudioClip sfx;
 
     // OnPointer functions for when interacting with UI elements
     public void OnPointerDown(PointerEventData eventData)
@@ -56,6 +57,7 @@ public class Control : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
     public void AssignControl(FacePart fp)
     {
         facePart = fp;
+        facePart.sfx = sfx;
         facePart.Assigned = true;
     }
 

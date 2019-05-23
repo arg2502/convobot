@@ -19,15 +19,20 @@ public class FacePart : MonoBehaviour {
     protected int numOfStates;
     public int NumOfStates { get { return numOfStates; } }
 
+    public AudioClip sfx { get; set; }
+
     public void UpdateState(float _value) 
     {
         prevValue = (Mathf.Round(value * 10f) / 10f);
         value = _value;
-        //if (prevValue != (Mathf.Round(value * 10f) / 10f))
-        //    AudioManager.instance.PlaySFX();
-        //value = (Mathf.Round(_value * 10f) / 10f);
+        
         float roundedValue = (Mathf.Round(_value * 10f) / 10f);
         if (prevValue != roundedValue)
-            AudioManager.instance.PlaySFX();
+            PlaySFX();
+    }
+
+    void PlaySFX()
+    {
+        AudioManager.instance.PlaySFX(sfx);
     }
 }
