@@ -605,7 +605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facePart: {fileID: 0}
-  sfx: {fileID: 8300000, guid: d6881541d55fbe648a5699f8a17282cd, type: 3}
+  sfx: {fileID: 8300000, guid: 16a83b0deacf4364c87ae76308324ce0, type: 3}
   UpButton: {fileID: 114534680189308454}
   DownButton: {fileID: 114568327914291742}
 --- !u!222 &222295696238789052
