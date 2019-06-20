@@ -31,16 +31,6 @@ public class PlayMenuController : MonoBehaviour
             PlayerPrefs.SetInt("Level3Complete", 0);
         }
 
-        if (!PlayerPrefs.HasKey("Level4Complete"))
-        {
-            PlayerPrefs.SetInt("Level4Complete", 0);
-        }
-
-        if (!PlayerPrefs.HasKey("Level5Complete"))
-        {
-            PlayerPrefs.SetInt("Level5Complete", 0);
-        }
-
         if (!PlayerPrefs.HasKey("Level1Perfect"))
         {
             PlayerPrefs.SetInt("Level1Perfect", 0);
@@ -54,16 +44,6 @@ public class PlayMenuController : MonoBehaviour
         if (!PlayerPrefs.HasKey("Level3Perfect"))
         {
             PlayerPrefs.SetInt("Level3Perfect", 0);
-        }
-
-        if (!PlayerPrefs.HasKey("Level4Perfect"))
-        {
-            PlayerPrefs.SetInt("Level4Perfect", 0);
-        }
-
-        if (!PlayerPrefs.HasKey("Level5Perfect"))
-        {
-            PlayerPrefs.SetInt("Level5Perfect", 0);
         }
 
         setUpButtons();
@@ -101,5 +81,18 @@ public class PlayMenuController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void ResetLevels()
+    {
+        PlayerPrefs.SetInt("Level1Complete", 0);
+        PlayerPrefs.SetInt("Level2Complete", 0);
+        PlayerPrefs.SetInt("Level3Complete", 0);
+
+        PlayerPrefs.SetInt("Level1Perfect", 0);
+        PlayerPrefs.SetInt("Level2Perfect", 0);
+        PlayerPrefs.SetInt("Level3Perfect", 0);
+
+        setUpButtons();
     }
 }
