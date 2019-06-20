@@ -59,7 +59,10 @@ public class GameController : MonoBehaviour
     System.DateTime adjustmentTimer;
     public int timerCooldown = 30;
     public int timerCooldownDecay = 5;
-    public TextMeshPro resultText;
+    public GameObject correctBanner;
+    public GameObject incorrectBanner;
+    public GameObject sucessBanner;
+    public GameObject failBanner;
     bool isCorrect = false;
     public int chances = 3;
     public List<LevelData> levelDatas;
@@ -858,21 +861,17 @@ public class GameController : MonoBehaviour
 
     IEnumerator CorrectSequence()
     {
-        resultText.gameObject.SetActive(true);
-        resultText.text = "Correct!";
-        resultText.color = new Color32(20, 106, 20, 255);
+        correctBanner.gameObject.SetActive(true);
         yield return new WaitForSeconds(5);
-        resultText.gameObject.SetActive(false);
+        correctBanner.gameObject.SetActive(false);
         ChangeStage(GameStages.ConversationStage);
     }
 
     IEnumerator IncorrectSequence()
     {
-        resultText.gameObject.SetActive(true);
-        resultText.text = "Karen is suspicious...";
-        resultText.color = new Color32(248, 8, 8, 255);
+        incorrectBanner.gameObject.SetActive(true);
         yield return new WaitForSeconds(5);
-        resultText.gameObject.SetActive(false);
+        incorrectBanner.gameObject.SetActive(false);
         ChangeStage(GameStages.ConversationStage);
     }
 
@@ -895,23 +894,19 @@ public class GameController : MonoBehaviour
 
     IEnumerator WinSequence()
     {
-        resultText.gameObject.SetActive(true);
-        resultText.text = "Success!";
-        resultText.color = new Color32(20, 106, 20, 255);
+        sucessBanner.gameObject.SetActive(true);
         yield return new WaitForSeconds(5);
         SetLevelWin(true);
-        resultText.gameObject.SetActive(false);
+        sucessBanner.gameObject.SetActive(false);
         SceneManager.LoadScene("PlayScene");
     }
 
     IEnumerator LoseSequence()
     {
-        resultText.gameObject.SetActive(true);
-        resultText.text = "YOU'RE A ROBOT!!!!!";
-        resultText.color = new Color32(248, 8, 8, 255);
+        failBanner.gameObject.SetActive(true);
         yield return new WaitForSeconds(5);
         SetLevelWin(false);
-        resultText.gameObject.SetActive(false);
+        failBanner.gameObject.SetActive(false);
         SceneManager.LoadScene("PlayScene");
     }
 
