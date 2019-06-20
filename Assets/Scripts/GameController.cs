@@ -37,9 +37,9 @@ public class GameController : MonoBehaviour
     {
         public List<string> conversationBits;
         public Emotions emotion;
+        public GameObject emotionEmoji;
     }
 
-    
     public GameObject dialogWindow;
     public TextMeshPro dialogText;
     int conversationIndex = 0;
@@ -63,6 +63,7 @@ public class GameController : MonoBehaviour
     bool isCorrect = false;
     public int chances = 3;
     public List<LevelData> levelDatas;
+    public List<GameObject> allTheEmoji;
     public ControlGenerator controlGenerator;
     public ConnectorController connectorController;
     public PlayableDirector timeline;
@@ -198,6 +199,13 @@ public class GameController : MonoBehaviour
             dialogIndex = 0;
             List<string> dialog = levelDatas[conversationIndex].conversationBits;
             dialogText.text = dialog[dialogIndex];
+
+            foreach(GameObject emoji in allTheEmoji)
+            {
+                emoji.SetActive(false);
+            }
+
+            levelDatas[conversationIndex].emotionEmoji.SetActive(true);
         }
     }
 

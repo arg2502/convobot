@@ -1022,19 +1022,30 @@ MonoBehaviour:
     - Hi my name is Karen.
     - It's so nice to meet you.
     emotion: 2
+    emotionEmoji: {fileID: 1464281778}
   - conversationBits:
     - I was worried you would not show up
     - The last few dates I have had stood me up
     - They left me waiting for hours
     emotion: 3
+    emotionEmoji: {fileID: 617592880}
   - conversationBits:
     - It has been a very hard week for me as well
     - My goldfish died the other day
     emotion: 0
+    emotionEmoji: {fileID: 1844124089}
   - conversationBits:
     - But you know what they say
     - When life gives you lemons throw the lemons back at life
     emotion: 4
+    emotionEmoji: {fileID: 1464281778}
+  allTheEmoji:
+  - {fileID: 1175979816}
+  - {fileID: 1464281778}
+  - {fileID: 617592880}
+  - {fileID: 1844124089}
+  - {fileID: 1558698569}
+  - {fileID: 541466891}
   controlGenerator: {fileID: 2060181245}
   connectorController: {fileID: 1696699337}
   timeline: {fileID: 1967522378}
