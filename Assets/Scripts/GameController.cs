@@ -282,7 +282,7 @@ public class GameController : MonoBehaviour
         else
         {
             int timeStamp = timerCooldown - ts.Seconds;
-            timerText.text = timeStamp.ToString() + "s";
+            timerText.text = timeStamp.ToString();
         }
     }
 
