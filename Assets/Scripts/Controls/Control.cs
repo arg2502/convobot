@@ -18,23 +18,23 @@ public class Control : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
     // OnPointer functions for when interacting with UI elements
     public void OnPointerDown(PointerEventData eventData)
     {
-        canMove = true;
+        ToggleCanMove(true);
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        canMove = false;
+        ToggleCanMove(false);
     }
 
     // OnMouse functions for when interacting to 3D GameObjects
     protected virtual void OnMouseDown()
     {
-        canMove = true;
+        ToggleCanMove(true);
     }
 
     protected virtual void OnMouseUp()
     {
-        canMove = false;
+        ToggleCanMove(false);
     }
      
     protected void Update()
@@ -59,6 +59,11 @@ public class Control : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
         facePart = fp;
         facePart.sfx = sfx;
         facePart.Assigned = true;
+    }
+
+    public void ToggleCanMove(bool _canMove)
+    {
+        canMove = _canMove;
     }
 
 }

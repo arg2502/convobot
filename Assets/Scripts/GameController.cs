@@ -292,6 +292,7 @@ public class GameController : MonoBehaviour
     void StartMoveToConversationStage()
     {
         timerWindow.SetActive(false);
+        controlGenerator.ToggleControlsCanMove(false);
         AudioManager.instance.StopRobotMusic();
         StartCoroutine(MoveToConversation());
     }

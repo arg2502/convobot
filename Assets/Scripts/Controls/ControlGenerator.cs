@@ -166,4 +166,12 @@ public class ControlGenerator : MonoBehaviour {
             control.gameObject.SetActive(activate);
         }
     }
+
+    public void ToggleControlsCanMove(bool _canMove)
+    {
+        foreach(var control in currentControlsObj)
+        {
+            control.GetComponentInChildren<Control>().ToggleCanMove(_canMove);
+        }
+    }
 }
