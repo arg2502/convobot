@@ -57,7 +57,8 @@ public class Control : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
     public void AssignControl(FacePart fp)
     {
         facePart = fp;
-        facePart.sfx = sfx;
+        if (!(this is SliderControl))
+            facePart.sfx = sfx;
         facePart.Assigned = true;
     }
 

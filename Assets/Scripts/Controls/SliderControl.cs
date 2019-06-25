@@ -9,6 +9,7 @@ public class SliderControl : Control {
     Slider uiSlider;
     public GameObject modelSlide;
     Animator slideAnimator;
+    bool soundIsPlaying = false;
 
     void Start()
     {
@@ -28,10 +29,27 @@ public class SliderControl : Control {
     }
 	
 	new void Update()
-	{
-		if(canMove)
-            value = uiSlider.value;
-
+	{        
+        if (canMove)
+        {
+            value = uiSlider.value; // -1 to 1
+            float pitch = (value + 1.01f) / 2f; // 0.01 to 1.01 (really 1 max though)         
+            if (!soundIsPlaying)
+            {
+                AudioManager.instance.PlaySFX(sfx, false, true, pitch);
+                soundIsPlaying = true;
+            }
+            if (AudioManager.instance.GetPlayingSource(sfx) != null)
+                AudioManager.instance.GetPlayingSource(sfx).pitch = pitch;
+        }
+        else
+        {
+            if (soundIsPlaying)
+            {
+                soundIsPlaying = false;
+                AudioManager.instance.StopSource(sfx);
+            }
+        }
         //var uiPos = uiSlider.handleRect.;
         //print(uiPos);
         UpdateModelSlider();

@@ -63,20 +63,16 @@ public class AudioManager : MonoBehaviour {
     }
 
 
-    public void PlaySFX(AudioClip clip = null, bool randomPitch = true)
-    {
-        // TEMP FOR TESTING
-        //if (clip == null)
-        //  clip = testSFX;
+    public void PlaySFX(AudioClip clip = null, bool randomPitch = true, bool loop = false, float pitch = 1f)
+    {        
         if (clip == null) return;
-
-        var pitchRandom = 1f;
+                
         if (randomPitch)
         {
             // randomize pitch a little
             var low = 0.9f;
             var high = 1.1f;
-            pitchRandom = Random.Range(low, high);
+            pitch = Random.Range(low, high);
         }
 
         // find an empty source
@@ -122,10 +118,10 @@ public class AudioManager : MonoBehaviour {
         if (sfxSources[sourceIndex] == null)
             sourceIndex = 0;
 
-        sfxSources[sourceIndex].pitch = pitchRandom;
+        sfxSources[sourceIndex].pitch = pitch;
 
         sfxSources[sourceIndex].clip = clip;
-        sfxSources[sourceIndex].loop = false;
+        sfxSources[sourceIndex].loop = loop;
         sfxSources[sourceIndex].volume = 1f;
         //if (fade)
         //{
@@ -136,4 +132,21 @@ public class AudioManager : MonoBehaviour {
         sfxSources[sourceIndex].Play();
         //}
     }
+
+    public AudioSource GetPlayingSource(AudioClip clip)
+    {
+        for(int i = 0; i < sfxSources.Count; i++)
+        {
+            if (sfxSources[i].isPlaying && sfxSources[i].clip == clip)
+                return sfxSources[i];
+        }
+        return null;
+    }
+
+    public void StopSource(AudioClip clip)
+    {
+        if (GetPlayingSource(clip) != null)
+            GetPlayingSource(clip).Stop();
+    }
+
 }
