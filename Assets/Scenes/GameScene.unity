@@ -25537,6 +25537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentRobot: {fileID: 1973348288}
+  controlsScaleAdjust: 7.5
 --- !u!4 &2060181246
 Transform:
   m_ObjectHideFlags: 0

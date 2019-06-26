@@ -6,6 +6,7 @@ public class ControlGenerator : MonoBehaviour {
 
     GameObject[] controls;
     public Robot currentRobot;
+    public float controlsScaleAdjust;
     List<GameObject> currentControlsObj;
 
     List<Control> currentSwitches;
@@ -84,8 +85,15 @@ public class ControlGenerator : MonoBehaviour {
         foreach(var s in switchList)
         {
             // create obj
-            var controlObj = GameObject.Instantiate(s, currentRobot.controlsParent.transform);
+            var controlObj = GameObject.Instantiate(s);
+            controlObj.transform.parent = currentRobot.controlsParent.transform;
             currentControlsObj.Add(controlObj);
+
+            //adjust obj scale
+            controlObj.transform.localScale *= controlsScaleAdjust;
+
+            //adjust obj rotation
+            controlObj.transform.localRotation = Quaternion.Euler(Vector3.zero);
 
             // find random pos and place it there
             var rnd = Random.Range(0, currentRobot.PlaceholderPositions.Count);
@@ -106,9 +114,16 @@ public class ControlGenerator : MonoBehaviour {
         // now loop throught the rest of the placeholder positions and create the rest of the controls   
         for (int i = 0; i < currentRobot.PlaceholderPositions.Count; i++)
         {
-            var controlObj = GameObject.Instantiate(restList[i], currentRobot.controlsParent.transform);
+            var controlObj = GameObject.Instantiate(restList[i]);
+            controlObj.transform.parent = currentRobot.controlsParent.transform;
             currentControlsObj.Add(controlObj);
             controlObj.transform.position = currentRobot.PlaceholderPositions[i].transform.position;
+
+            //adjust obj scale
+            controlObj.transform.localScale *= controlsScaleAdjust;
+
+            //adjust obj rotation
+            controlObj.transform.localRotation = Quaternion.Euler(Vector3.zero);
 
             // store object reference in connector at this position
             AssignConnector(controlObj, currentRobot.PlaceholderPositions[i].gameObject);
