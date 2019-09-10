@@ -13,6 +13,8 @@ public class PlayMenuController : MonoBehaviour
     public Sprite activeImage;
 
     public Sprite perfectImage;
+
+    public GameObject AudioScreen;
 	// Use this for initialization
 	void Start ()
     {
@@ -94,5 +96,10 @@ public class PlayMenuController : MonoBehaviour
         PlayerPrefs.SetInt("Level3Perfect", 0);
 
         setUpButtons();
+    }
+
+    public void OpenAudioScreen()
+    {
+        AudioScreen.SetActive(true);
     }
 }
