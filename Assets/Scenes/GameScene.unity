@@ -1695,9 +1695,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2140884429}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1627588879}
+        m_MethodName: OpenAudio
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -13160,9 +13160,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2140884429}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1627588879}
+        m_MethodName: ExitGame
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -19844,6 +19844,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e8e8348fbac8f94cb3b346583f59dee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioScreen: {fileID: 2140884429}
 --- !u!1 &1642371338
 GameObject:
   m_ObjectHideFlags: 0
