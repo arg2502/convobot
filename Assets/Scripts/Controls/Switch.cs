@@ -17,6 +17,8 @@ public class Switch : Control {
     {
         base.OnMouseDown();
 
+        if (!canMove) return;
+
         if (value <= MIN_VALUE)
             value = NEUTRAL;
         else if (value == NEUTRAL)

@@ -10,6 +10,7 @@ public class Control : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
     protected const float NEUTRAL = 0f;
     protected float value; // current state of gear -- starts at neutral
     protected bool canMove = false; // true if the control is being manipulated 
+    protected bool isPaused = false;
 
     // corresponding part that is affected by the control -- assigned in inspector
     public FacePart facePart;
@@ -64,7 +65,12 @@ public class Control : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
 
     public void ToggleCanMove(bool _canMove)
     {
-        canMove = _canMove;
+        if (!isPaused)
+            canMove = _canMove;
     }
 
+    public void PauseControl(bool pause)
+    {
+        isPaused = pause;
+    }
 }

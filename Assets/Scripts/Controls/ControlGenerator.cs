@@ -189,4 +189,12 @@ public class ControlGenerator : MonoBehaviour {
             control.GetComponentInChildren<Control>().ToggleCanMove(_canMove);
         }
     }
+
+    public void PauseControls(bool pause)
+    {
+        foreach(var control in currentControlsObj)
+        {
+            control.GetComponentInChildren<Control>().PauseControl(pause);
+        }
+    }
 }

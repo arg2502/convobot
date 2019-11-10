@@ -13,9 +13,10 @@ public class GameController : MonoBehaviour
                               FacialAdjustmentStage,
                               MoveToConversationStage,
                               ResolveScoringStage,
-                              EndStage };
+                              EndStage,
+                              PauseStage };
 
-    private GameStages currentStage;
+    private GameStages currentStage, prevStage;
 
     public enum Emotions
     {
@@ -73,6 +74,8 @@ public class GameController : MonoBehaviour
     public PlayableAsset zoomIn;
     public PlayableAsset zoomOut;
     public int levelNumber = 1;
+    public PauseScreen pauseScreen;
+    public bool isPauseDown;
 
     void Start ()
     {
@@ -119,17 +122,35 @@ public class GameController : MonoBehaviour
                 UpdateEndStage();
                 break;
             }
+            case GameStages.PauseStage:
+            {
+                UpdatePauseStage();
+                break;
+            }
             default:
             {
                 break;
             }
         }
+
+        if (!isPauseDown && Input.GetKeyDown(KeyCode.Escape))
+        {
+            PressPause();            
+            isPauseDown = true;
+        }
+        if (isPauseDown && Input.GetKeyUp(KeyCode.Escape))
+            isPauseDown = false;
     }
 
     void ChangeStage(GameStages stage)
     {
         currentStage = stage;
         StartStage();
+    }
+
+    void ResumeStage(GameStages stage)
+    {
+        currentStage = stage;
     }
 
     void StartStage()
@@ -169,6 +190,11 @@ public class GameController : MonoBehaviour
             case GameStages.EndStage:
             {
                 StartEndStage();
+                break;
+            }
+            case GameStages.PauseStage:
+            {
+                StartPauseStage();
                 break;
             }
             default:
@@ -941,4 +967,31 @@ public class GameController : MonoBehaviour
         //Handles any updates needed for the End stage
     }
 
+    void PressPause()
+    {
+        if(currentStage != GameStages.PauseStage)
+        {
+            prevStage = currentStage;
+            ChangeStage(GameStages.PauseStage);
+        }
+        else
+        {
+            pauseScreen.CloseScreen();
+            controlGenerator.PauseControls(false);
+            ResumeStage(prevStage);
+        }
+
+    }
+
+    void StartPauseStage()
+    {        
+        controlGenerator.ToggleControlsCanMove(false);
+        controlGenerator.PauseControls(true);
+        pauseScreen.OpenScreen();
+    }
+
+    void UpdatePauseStage()
+    {
+        
+    }
 }
