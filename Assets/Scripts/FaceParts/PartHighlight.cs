@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ControlHighlight : MonoBehaviour 
+public class PartHighlight : MonoBehaviour 
 {
     [SerializeField]
     private float highlightStrength = 0.5f;
@@ -10,7 +10,7 @@ public class ControlHighlight : MonoBehaviour
     [SerializeField]
     private float highlightSpeed = 2f;
 
-    private Material[] materials;
+    private List<Material> materials;
     private float[] defaultHighlightValues;
     private string propertyName = "_Ambient";
 
@@ -20,8 +20,6 @@ public class ControlHighlight : MonoBehaviour
     {
         StoreMaterials();
         StoreDefaultHighlightValues();
-
-        //StartHighlighting();
 	}
 
     public void StartHighlighting()
@@ -37,21 +35,36 @@ public class ControlHighlight : MonoBehaviour
 
     private void StoreMaterials()
     {
+        materials = new List<Material>();
         MeshRenderer[] meshRenderers = GetComponentsInChildren<MeshRenderer>();
-
-        materials = new Material[meshRenderers.Length];
+        SkinnedMeshRenderer[] skinnedMeshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();        
 
         for (int i = 0; i < meshRenderers.Length; i++)
         {
-            materials[i] = meshRenderers[i].material;
+            Material[] thisMRMaterials = meshRenderers[i].materials;
+
+            for (int j = 0; j < thisMRMaterials.Length; j++)
+            {
+                materials.Add(thisMRMaterials[j]);
+            }
+        }
+
+        for (int i = 0; i < skinnedMeshRenderers.Length; i++)
+        {
+            Material[] thisSMRMaterials = skinnedMeshRenderers[i].materials;
+
+            for (int j = 0; j < thisSMRMaterials.Length; j++)
+            {
+                materials.Add(thisSMRMaterials[j]);
+            }
         }
     }
 
     private void StoreDefaultHighlightValues()
     {
-        defaultHighlightValues = new float[materials.Length];
+        defaultHighlightValues = new float[materials.Count];
 
-        for (int i = 0; i < materials.Length; i++)
+        for (int i = 0; i < materials.Count; i++)
         {
             defaultHighlightValues[i] = materials[i].GetFloat(propertyName);
         }
@@ -59,7 +72,7 @@ public class ControlHighlight : MonoBehaviour
 
     private void RestoreDefaultHighlightValues()
     {
-        for(int i = 0; i < materials.Length; i++)
+        for(int i = 0; i < materials.Count; i++)
         {
             float value = defaultHighlightValues[i];
             materials[i].SetFloat(propertyName, value);
