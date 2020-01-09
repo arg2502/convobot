@@ -400,43 +400,43 @@ public class GameController : MonoBehaviour
         {
             case Emotions.Amused:
                 {
-                    int correctCounter = 0;
+                    float correctCounter = 0;
                     if(robotComponents.robotLeftEyebrow.eyebrowState == Eyebrow.EyebrowState.NEUTRAL)
                     {
-                        ++correctCounter;
+                        correctCounter += 0.5f;
                     }
 
                     if(robotComponents.robotRightEyebrow.eyebrowState == Eyebrow.EyebrowState.NEUTRAL)
                     {
-                        ++correctCounter;
+                        correctCounter += 0.5f;
                     }
 
                     if(robotComponents.robotRightEyelids.eyelidState == Eyelids.EyelidState.OPEN)
                     {
-                        ++correctCounter;
+                        correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotLeftEyelids.eyelidState == Eyelids.EyelidState.OPEN)
                     {
-                        ++correctCounter;
+                        correctCounter += 1.0f;
                     }
 
                     if(robotComponents.robotSkinTone.skinState == SkinTone.SkinState.NEUTRAL)
                     {
-                        ++correctCounter;
+                        correctCounter += 0.5f;
                     }
 
                     if(robotComponents.robotMouthOpen.mouthOpenState == MouthOpen.MouthOpenState.OPEN)
                     {
-                        ++correctCounter;
+                        correctCounter += 2.0f;
                     }
 
                     if(robotComponents.robotMouthSmile.mouthSmileState == MouthSmile.MouthSmileState.SMILE)
                     {
-                        ++correctCounter;
+                        correctCounter += 2.0f;
                     }
 
-                    if(correctCounter >= 4)
+                    if(correctCounter >= 3)
                     {
                         return true;
                     }
@@ -444,43 +444,43 @@ public class GameController : MonoBehaviour
                 }
             case Emotions.Angry:
                 {
-                    int correctCounter = 0;
+                    float correctCounter = 0;
                     if (robotComponents.robotLeftEyebrow.eyebrowState == Eyebrow.EyebrowState.LOWERED)
                     {
-                        ++correctCounter;
+                        correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyebrow.eyebrowState == Eyebrow.EyebrowState.LOWERED)
                     {
-                        ++correctCounter;
+                        correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyelids.eyelidState == Eyelids.EyelidState.SQUINTING)
                     {
-                        ++correctCounter;
+                        correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotLeftEyelids.eyelidState == Eyelids.EyelidState.SQUINTING)
                     {
-                        ++correctCounter;
+                        correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.FURIOUS)
                     {
-                        ++correctCounter;
+                        correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotMouthOpen.mouthOpenState == MouthOpen.MouthOpenState.CLOSED)
                     {
-                        ++correctCounter;
+                        correctCounter += 2.0f;
                     }
 
                     if (robotComponents.robotMouthSmile.mouthSmileState == MouthSmile.MouthSmileState.FROWN)
                     {
-                        ++correctCounter;
+                        correctCounter += 2.0f;
                     }
 
-                    if (correctCounter >= 4)
+                    if (correctCounter >= 3)
                     {
                         return true;
                     }
@@ -488,43 +488,43 @@ public class GameController : MonoBehaviour
                 }
             case Emotions.Annoyed:
                 {
-                    int correctCounter = 0;
+                    float correctCounter = 0;
                     if (robotComponents.robotLeftEyebrow.eyebrowState == Eyebrow.EyebrowState.LOWERED)
                     {
-                        ++correctCounter;
+                        correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyebrow.eyebrowState == Eyebrow.EyebrowState.LOWERED)
                     {
-                        ++correctCounter;
+                        correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyelids.eyelidState == Eyelids.EyelidState.SQUINTING)
                     {
-                        ++correctCounter;
+                        correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotLeftEyelids.eyelidState == Eyelids.EyelidState.SQUINTING)
                     {
-                        ++correctCounter;
+                        correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.NEUTRAL)
                     {
-                        ++correctCounter;
+                        correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotMouthOpen.mouthOpenState == MouthOpen.MouthOpenState.CLOSED)
                     {
-                        ++correctCounter;
+                        correctCounter += 2.0f;
                     }
 
                     if (robotComponents.robotMouthSmile.mouthSmileState == MouthSmile.MouthSmileState.SLIGHTFROWN)
                     {
-                        ++correctCounter;
+                        correctCounter += 2.0f;
                     }
 
-                    if (correctCounter >= 4)
+                    if (correctCounter >= 3)
                     {
                         return true;
                     }
@@ -532,43 +532,43 @@ public class GameController : MonoBehaviour
                 }
             case Emotions.Confused:
                 {
-                    int correctCounter = 0;
+                    float correctCounter = 0;
                     if (robotComponents.robotLeftEyebrow.eyebrowState == Eyebrow.EyebrowState.LOWERED)
                     {
-                        ++correctCounter;
+                        correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyebrow.eyebrowState == Eyebrow.EyebrowState.LOWERED)
                     {
-                        ++correctCounter;
+                        correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyelids.eyelidState == Eyelids.EyelidState.SQUINTING)
                     {
-                        ++correctCounter;
+                        correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotLeftEyelids.eyelidState == Eyelids.EyelidState.SQUINTING)
                     {
-                        ++correctCounter;
+                        correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.NEUTRAL)
                     {
-                        ++correctCounter;
+                        correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotMouthOpen.mouthOpenState == MouthOpen.MouthOpenState.AJAR)
                     {
-                        ++correctCounter;
+                        correctCounter += 2.0f;
                     }
 
                     if (robotComponents.robotMouthSmile.mouthSmileState == MouthSmile.MouthSmileState.NEUTRAL)
                     {
-                        ++correctCounter;
+                        correctCounter += 2.0f;
                     }
 
-                    if (correctCounter >= 4)
+                    if (correctCounter >= 3)
                     {
                         return true;
                     }
@@ -576,43 +576,43 @@ public class GameController : MonoBehaviour
                 }
             case Emotions.Disgusted:
                 {
-                    int correctCounter = 0;
+                    float correctCounter = 0;
                     if (robotComponents.robotLeftEyebrow.eyebrowState == Eyebrow.EyebrowState.LOWERED)
                     {
-                        ++correctCounter;
+                        correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyebrow.eyebrowState == Eyebrow.EyebrowState.LOWERED)
                     {
-                        ++correctCounter;
+                        correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyelids.eyelidState == Eyelids.EyelidState.SQUINTING)
                     {
-                        ++correctCounter;
+                        correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotLeftEyelids.eyelidState == Eyelids.EyelidState.SQUINTING)
                     {
-                        ++correctCounter;
+                        correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.PALE)
                     {
-                        ++correctCounter;
+                        correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotMouthOpen.mouthOpenState == MouthOpen.MouthOpenState.OPEN)
                     {
-                        ++correctCounter;
+                        correctCounter += 2.0f;
                     }
 
                     if (robotComponents.robotMouthSmile.mouthSmileState == MouthSmile.MouthSmileState.FROWN)
                     {
-                        ++correctCounter;
+                        correctCounter += 2.0f;
                     }
 
-                    if (correctCounter >= 4)
+                    if (correctCounter >= 3)
                     {
                         return true;
                     }
@@ -620,43 +620,43 @@ public class GameController : MonoBehaviour
                 }
             case Emotions.Happy:
                 {
-                    int correctCounter = 0;
+                    float correctCounter = 0;
                     if (robotComponents.robotLeftEyebrow.eyebrowState == Eyebrow.EyebrowState.NEUTRAL)
                     {
-                        ++correctCounter;
+                        correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyebrow.eyebrowState == Eyebrow.EyebrowState.NEUTRAL)
                     {
-                        ++correctCounter;
+                        correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyelids.eyelidState == Eyelids.EyelidState.OPEN)
                     {
-                        ++correctCounter;
+                        correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotLeftEyelids.eyelidState == Eyelids.EyelidState.OPEN)
                     {
-                        ++correctCounter;
+                        correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.NEUTRAL)
                     {
-                        ++correctCounter;
+                        correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotMouthOpen.mouthOpenState == MouthOpen.MouthOpenState.CLOSED)
                     {
-                        ++correctCounter;
+                        correctCounter += 2.0f;
                     }
 
                     if (robotComponents.robotMouthSmile.mouthSmileState == MouthSmile.MouthSmileState.SMILE)
                     {
-                        ++correctCounter;
+                        correctCounter += 2.0f;
                     }
 
-                    if (correctCounter >= 4)
+                    if (correctCounter >= 3)
                     {
                         return true;
                     }
@@ -664,43 +664,43 @@ public class GameController : MonoBehaviour
                 }
             case Emotions.Nervous:
                 {
-                    int correctCounter = 0;
+                    float correctCounter = 0;
                     if (robotComponents.robotLeftEyebrow.eyebrowState == Eyebrow.EyebrowState.RAISED)
                     {
-                        ++correctCounter;
+                        correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyebrow.eyebrowState == Eyebrow.EyebrowState.RAISED)
                     {
-                        ++correctCounter;
+                        correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyelids.eyelidState == Eyelids.EyelidState.OPEN)
                     {
-                        ++correctCounter;
+                        correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotLeftEyelids.eyelidState == Eyelids.EyelidState.OPEN)
                     {
-                        ++correctCounter;
+                        correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.PALE)
                     {
-                        ++correctCounter;
+                        correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotMouthOpen.mouthOpenState == MouthOpen.MouthOpenState.CLOSED)
                     {
-                        ++correctCounter;
+                        correctCounter += 2.0f;
                     }
 
                     if (robotComponents.robotMouthSmile.mouthSmileState == MouthSmile.MouthSmileState.NEUTRAL)
                     {
-                        ++correctCounter;
+                        correctCounter += 2.0f;
                     }
 
-                    if (correctCounter >= 4)
+                    if (correctCounter >= 3)
                     {
                         return true;
                     }
@@ -708,43 +708,43 @@ public class GameController : MonoBehaviour
                 }
             case Emotions.Romantic:
                 {
-                    int correctCounter = 0;
+                    float correctCounter = 0;
                     if (robotComponents.robotLeftEyebrow.eyebrowState == Eyebrow.EyebrowState.NEUTRAL)
                     {
-                        ++correctCounter;
+                        correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyebrow.eyebrowState == Eyebrow.EyebrowState.NEUTRAL)
                     {
-                        ++correctCounter;
+                        correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyelids.eyelidState == Eyelids.EyelidState.SQUINTING)
                     {
-                        ++correctCounter;
+                        correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotLeftEyelids.eyelidState == Eyelids.EyelidState.SQUINTING)
                     {
-                        ++correctCounter;
+                        correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.NEUTRAL)
                     {
-                        ++correctCounter;
+                        correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotMouthOpen.mouthOpenState == MouthOpen.MouthOpenState.CLOSED)
                     {
-                        ++correctCounter;
+                        correctCounter += 2.0f;
                     }
 
                     if (robotComponents.robotMouthSmile.mouthSmileState == MouthSmile.MouthSmileState.SMIRK)
                     {
-                        ++correctCounter;
+                        correctCounter += 2.0f;
                     }
 
-                    if (correctCounter >= 4)
+                    if (correctCounter >= 3)
                     {
                         return true;
                     }
@@ -752,43 +752,43 @@ public class GameController : MonoBehaviour
                 }
             case Emotions.Sad:
                 {
-                    int correctCounter = 0;
+                    float correctCounter = 0;
                     if (robotComponents.robotLeftEyebrow.eyebrowState == Eyebrow.EyebrowState.NEUTRAL)
                     {
-                        ++correctCounter;
+                        correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyebrow.eyebrowState == Eyebrow.EyebrowState.NEUTRAL)
                     {
-                        ++correctCounter;
+                        correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyelids.eyelidState == Eyelids.EyelidState.CLOSED)
                     {
-                        ++correctCounter;
+                        correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotLeftEyelids.eyelidState == Eyelids.EyelidState.CLOSED)
                     {
-                        ++correctCounter;
+                        correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.NEUTRAL)
                     {
-                        ++correctCounter;
+                        correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotMouthOpen.mouthOpenState == MouthOpen.MouthOpenState.CLOSED)
                     {
-                        ++correctCounter;
+                        correctCounter += 2.0f;
                     }
 
                     if (robotComponents.robotMouthSmile.mouthSmileState == MouthSmile.MouthSmileState.FROWN)
                     {
-                        ++correctCounter;
+                        correctCounter += 2.0f;
                     }
 
-                    if (correctCounter >= 4)
+                    if (correctCounter >= 3)
                     {
                         return true;
                     }
@@ -796,43 +796,43 @@ public class GameController : MonoBehaviour
                 }
             case Emotions.Scared:
                 {
-                    int correctCounter = 0;
+                    float correctCounter = 0;
                     if (robotComponents.robotLeftEyebrow.eyebrowState == Eyebrow.EyebrowState.RAISED)
                     {
-                        ++correctCounter;
+                        correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyebrow.eyebrowState == Eyebrow.EyebrowState.RAISED)
                     {
-                        ++correctCounter;
+                        correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyelids.eyelidState == Eyelids.EyelidState.OPEN)
                     {
-                        ++correctCounter;
+                        correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotLeftEyelids.eyelidState == Eyelids.EyelidState.OPEN)
                     {
-                        ++correctCounter;
+                        correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.PALE)
                     {
-                        ++correctCounter;
+                        correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotMouthOpen.mouthOpenState == MouthOpen.MouthOpenState.OPEN)
                     {
-                        ++correctCounter;
+                        correctCounter += 2.0f;
                     }
 
                     if (robotComponents.robotMouthSmile.mouthSmileState == MouthSmile.MouthSmileState.FROWN)
                     {
-                        ++correctCounter;
+                        correctCounter += 2.0f;
                     }
 
-                    if (correctCounter >= 4)
+                    if (correctCounter >= 3)
                     {
                         return true;
                     }
@@ -840,43 +840,43 @@ public class GameController : MonoBehaviour
                 }
             case Emotions.Surprised:
                 {
-                    int correctCounter = 0;
+                    float correctCounter = 0;
                     if (robotComponents.robotLeftEyebrow.eyebrowState == Eyebrow.EyebrowState.RAISED)
                     {
-                        ++correctCounter;
+                        correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyebrow.eyebrowState == Eyebrow.EyebrowState.RAISED)
                     {
-                        ++correctCounter;
+                        correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyelids.eyelidState == Eyelids.EyelidState.OPEN)
                     {
-                        ++correctCounter;
+                        correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotLeftEyelids.eyelidState == Eyelids.EyelidState.OPEN)
                     {
-                        ++correctCounter;
+                        correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.BLUSHING)
                     {
-                        ++correctCounter;
+                        correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotMouthOpen.mouthOpenState == MouthOpen.MouthOpenState.OPEN)
                     {
-                        ++correctCounter;
+                        correctCounter += 2.0f;
                     }
 
                     if (robotComponents.robotMouthSmile.mouthSmileState == MouthSmile.MouthSmileState.NEUTRAL)
                     {
-                        ++correctCounter;
+                        correctCounter += 2.0f;
                     }
 
-                    if (correctCounter >= 4)
+                    if (correctCounter >= 3)
                     {
                         return true;
                     }
