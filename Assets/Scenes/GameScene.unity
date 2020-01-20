@@ -1608,8 +1608,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c137f3278c2fa5f44996bf73716d5504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightStrength: 0.5
-  highlightSpeed: 2
+  highlightStrength: 0.4
+  highlightSpeed: 1
+  correctColor: {r: 1, g: 1, b: 1, a: 1}
+  incorrectColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &352767417
 GameObject:
   m_ObjectHideFlags: 0
@@ -2340,8 +2342,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c137f3278c2fa5f44996bf73716d5504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightStrength: 0.5
-  highlightSpeed: 2
+  highlightStrength: 0.4
+  highlightSpeed: 1
+  correctColor: {r: 1, g: 1, b: 1, a: 1}
+  incorrectColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!4 &513047114 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400008, guid: 05445899ad347bf4ba7cef5626e62d73,
@@ -12862,8 +12866,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c137f3278c2fa5f44996bf73716d5504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightStrength: 0.5
-  highlightSpeed: 2
+  highlightStrength: 0.4
+  highlightSpeed: 1
+  correctColor: {r: 1, g: 1, b: 1, a: 1}
+  incorrectColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &830577002
 GameObject:
   m_ObjectHideFlags: 0
@@ -18840,8 +18846,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c137f3278c2fa5f44996bf73716d5504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightStrength: 0.5
-  highlightSpeed: 2
+  highlightStrength: 0.4
+  highlightSpeed: 1
+  correctColor: {r: 1, g: 1, b: 1, a: 1}
+  incorrectColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &1192954212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19479,8 +19487,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c137f3278c2fa5f44996bf73716d5504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightStrength: 0.5
-  highlightSpeed: 2
+  highlightStrength: 0.4
+  highlightSpeed: 1
+  correctColor: {r: 1, g: 1, b: 1, a: 1}
+  incorrectColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &1542008471
 GameObject:
   m_ObjectHideFlags: 0
@@ -21823,8 +21833,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c137f3278c2fa5f44996bf73716d5504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightStrength: 0.5
-  highlightSpeed: 2
+  highlightStrength: 0.4
+  highlightSpeed: 1
+  correctColor: {r: 1, g: 1, b: 1, a: 1}
+  incorrectColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &2006865902
 GameObject:
   m_ObjectHideFlags: 0

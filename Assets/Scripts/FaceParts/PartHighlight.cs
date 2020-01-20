@@ -8,13 +8,19 @@ public class PartHighlight : MonoBehaviour
     private float highlightStrength = 0.5f;
 
     [SerializeField]
-    private float highlightSpeed = 2f;
+    private float highlightSpeed = 0.2f;
+
+    [SerializeField]
+    private Color correctColor = Color.white;
+
+    [SerializeField]
+    private Color incorrectColor = Color.red;
 
     private List<Material> materials;
-    private float[] defaultHighlightValues;
-    private string propertyName = "_Ambient";
+    private Color[] defaultHighlightValues;
 
     private bool isHighlighting = false;
+    private Color highlightColor = Color.black;
 
 	void Start ()
     {
@@ -22,9 +28,15 @@ public class PartHighlight : MonoBehaviour
         StoreDefaultHighlightValues();
 	}
 
-    public void StartHighlighting()
+    public void StartCorrectHighlighting()
     {
-        isHighlighting = true;
+        highlightColor = correctColor;
+        StartCoroutine(HighlightCoroutine());
+    }
+
+    public void StartIncorrectHighlighting()
+    {
+        highlightColor = incorrectColor;
         StartCoroutine(HighlightCoroutine());
     }
 
@@ -62,11 +74,11 @@ public class PartHighlight : MonoBehaviour
 
     private void StoreDefaultHighlightValues()
     {
-        defaultHighlightValues = new float[materials.Count];
+        defaultHighlightValues = new Color[materials.Count];
 
         for (int i = 0; i < materials.Count; i++)
         {
-            defaultHighlightValues[i] = materials[i].GetFloat(propertyName);
+            defaultHighlightValues[i] = materials[i].color;
         }
     }
 
@@ -74,46 +86,31 @@ public class PartHighlight : MonoBehaviour
     {
         for(int i = 0; i < materials.Count; i++)
         {
-            float value = defaultHighlightValues[i];
-            materials[i].SetFloat(propertyName, value);
-        }
-    }
-
-    private void AddToHighlightValues(float value)
-    {
-        foreach (Material material in materials)
-        {
-            float currentValue = material.GetFloat(propertyName);
-            material.SetFloat(propertyName, currentValue + value);
+            Color value = defaultHighlightValues[i];
+            materials[i].color = value;
         }
     }
 
     private IEnumerator HighlightCoroutine()
     {
-        float timer = 0;
-        bool increasingHighlight = true;
+        isHighlighting = true;
 
         while (isHighlighting)
         {
-            if(timer >= 1f/highlightSpeed)
-            {
-                increasingHighlight = !increasingHighlight;
-                timer = 0;
-            }
-
-            if(increasingHighlight)
-            {
-                AddToHighlightValues(0.1f * highlightStrength);
-            }
-            else
-            {
-                AddToHighlightValues(-0.1f * highlightStrength);
-            }
-
-            timer += Time.deltaTime;
+            float t = Mathf.PingPong(Time.time * highlightSpeed, highlightStrength);
+            UpdateHighlights(t);
             yield return null;
         }
 
         RestoreDefaultHighlightValues();
+    }
+
+    private void UpdateHighlights(float lerpStep)
+    {
+        for (int i = 0; i < materials.Count; i++)
+        {
+            Color defaultValue = defaultHighlightValues[i];
+            materials[i].color = Color.Lerp(defaultValue, highlightColor, lerpStep);
+        }
     }
 }

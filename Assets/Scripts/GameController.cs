@@ -77,9 +77,13 @@ public class GameController : MonoBehaviour
     public PauseScreen pauseScreen;
     public bool isPauseDown;
 
+    private PartHighlight[] partHighlightComponenets;
+
     void Start ()
     {
         robotComponents = robotCharacter.GetComponent<Robot>();
+        partHighlightComponenets = GameObject.FindObjectsOfType<PartHighlight>();
+
         ChangeStage(GameStages.IntroStage);
 	}
 	
@@ -235,6 +239,11 @@ public class GameController : MonoBehaviour
             }
 
             levelDatas[conversationIndex].emotionEmoji.SetActive(true);
+        }
+
+        foreach (PartHighlight part in partHighlightComponenets)
+        {
+            part.StopHighlighting();
         }
     }
 
@@ -395,6 +404,11 @@ public class GameController : MonoBehaviour
 
     bool IsFaceCorrectEnough()
     {
+        foreach(PartHighlight part in partHighlightComponenets)
+        {
+            part.StartIncorrectHighlighting();
+        }
+
         Emotions currentEmotion = levelDatas[conversationIndex].emotion;
         switch(currentEmotion)
         {
@@ -403,36 +417,43 @@ public class GameController : MonoBehaviour
                     float correctCounter = 0;
                     if(robotComponents.robotLeftEyebrow.eyebrowState == Eyebrow.EyebrowState.NEUTRAL)
                     {
+                        robotComponents.robotLeftEyebrow.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
                     if(robotComponents.robotRightEyebrow.eyebrowState == Eyebrow.EyebrowState.NEUTRAL)
                     {
+                        robotComponents.robotRightEyebrow.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
                     if(robotComponents.robotRightEyelids.eyelidState == Eyelids.EyelidState.OPEN)
                     {
+                        robotComponents.robotRightEyelids.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotLeftEyelids.eyelidState == Eyelids.EyelidState.OPEN)
                     {
+                        robotComponents.robotLeftEyelids.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 1.0f;
                     }
 
                     if(robotComponents.robotSkinTone.skinState == SkinTone.SkinState.NEUTRAL)
                     {
+                        robotComponents.robotSkinTone.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
                     if(robotComponents.robotMouthOpen.mouthOpenState == MouthOpen.MouthOpenState.OPEN)
                     {
+                        robotComponents.robotMouthOpen.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 2.0f;
                     }
 
                     if(robotComponents.robotMouthSmile.mouthSmileState == MouthSmile.MouthSmileState.SMILE)
                     {
+                        robotComponents.robotMouthSmile.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 2.0f;
                     }
 
@@ -447,36 +468,43 @@ public class GameController : MonoBehaviour
                     float correctCounter = 0;
                     if (robotComponents.robotLeftEyebrow.eyebrowState == Eyebrow.EyebrowState.LOWERED)
                     {
+                        robotComponents.robotLeftEyebrow.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyebrow.eyebrowState == Eyebrow.EyebrowState.LOWERED)
                     {
+                        robotComponents.robotRightEyebrow.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyelids.eyelidState == Eyelids.EyelidState.SQUINTING)
                     {
+                        robotComponents.robotRightEyelids.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotLeftEyelids.eyelidState == Eyelids.EyelidState.SQUINTING)
                     {
+                        robotComponents.robotLeftEyelids.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.FURIOUS)
                     {
+                        robotComponents.robotSkinTone.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotMouthOpen.mouthOpenState == MouthOpen.MouthOpenState.CLOSED)
                     {
+                        robotComponents.robotMouthOpen.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 2.0f;
                     }
 
                     if (robotComponents.robotMouthSmile.mouthSmileState == MouthSmile.MouthSmileState.FROWN)
                     {
+                        robotComponents.robotMouthSmile.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 2.0f;
                     }
 
@@ -491,36 +519,43 @@ public class GameController : MonoBehaviour
                     float correctCounter = 0;
                     if (robotComponents.robotLeftEyebrow.eyebrowState == Eyebrow.EyebrowState.LOWERED)
                     {
+                        robotComponents.robotLeftEyebrow.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyebrow.eyebrowState == Eyebrow.EyebrowState.LOWERED)
                     {
+                        robotComponents.robotRightEyebrow.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyelids.eyelidState == Eyelids.EyelidState.SQUINTING)
                     {
+                        robotComponents.robotRightEyelids.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotLeftEyelids.eyelidState == Eyelids.EyelidState.SQUINTING)
                     {
+                        robotComponents.robotLeftEyelids.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.NEUTRAL)
                     {
+                        robotComponents.robotSkinTone.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotMouthOpen.mouthOpenState == MouthOpen.MouthOpenState.CLOSED)
                     {
+                        robotComponents.robotMouthOpen.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 2.0f;
                     }
 
                     if (robotComponents.robotMouthSmile.mouthSmileState == MouthSmile.MouthSmileState.SLIGHTFROWN)
                     {
+                        robotComponents.robotMouthSmile.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 2.0f;
                     }
 
@@ -535,36 +570,43 @@ public class GameController : MonoBehaviour
                     float correctCounter = 0;
                     if (robotComponents.robotLeftEyebrow.eyebrowState == Eyebrow.EyebrowState.LOWERED)
                     {
+                        robotComponents.robotLeftEyebrow.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyebrow.eyebrowState == Eyebrow.EyebrowState.LOWERED)
                     {
+                        robotComponents.robotRightEyebrow.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyelids.eyelidState == Eyelids.EyelidState.SQUINTING)
                     {
+                        robotComponents.robotRightEyelids.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotLeftEyelids.eyelidState == Eyelids.EyelidState.SQUINTING)
                     {
+                        robotComponents.robotLeftEyelids.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.NEUTRAL)
                     {
+                        robotComponents.robotSkinTone.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotMouthOpen.mouthOpenState == MouthOpen.MouthOpenState.AJAR)
                     {
+                        robotComponents.robotMouthOpen.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 2.0f;
                     }
 
                     if (robotComponents.robotMouthSmile.mouthSmileState == MouthSmile.MouthSmileState.NEUTRAL)
                     {
+                        robotComponents.robotMouthSmile.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 2.0f;
                     }
 
@@ -579,36 +621,43 @@ public class GameController : MonoBehaviour
                     float correctCounter = 0;
                     if (robotComponents.robotLeftEyebrow.eyebrowState == Eyebrow.EyebrowState.LOWERED)
                     {
+                        robotComponents.robotLeftEyebrow.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyebrow.eyebrowState == Eyebrow.EyebrowState.LOWERED)
                     {
+                        robotComponents.robotRightEyebrow.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyelids.eyelidState == Eyelids.EyelidState.SQUINTING)
                     {
+                        robotComponents.robotRightEyelids.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotLeftEyelids.eyelidState == Eyelids.EyelidState.SQUINTING)
                     {
+                        robotComponents.robotLeftEyelids.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.PALE)
                     {
+                        robotComponents.robotSkinTone.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotMouthOpen.mouthOpenState == MouthOpen.MouthOpenState.OPEN)
                     {
+                        robotComponents.robotMouthOpen.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 2.0f;
                     }
 
                     if (robotComponents.robotMouthSmile.mouthSmileState == MouthSmile.MouthSmileState.FROWN)
                     {
+                        robotComponents.robotMouthSmile.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 2.0f;
                     }
 
@@ -623,36 +672,43 @@ public class GameController : MonoBehaviour
                     float correctCounter = 0;
                     if (robotComponents.robotLeftEyebrow.eyebrowState == Eyebrow.EyebrowState.NEUTRAL)
                     {
+                        robotComponents.robotLeftEyebrow.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyebrow.eyebrowState == Eyebrow.EyebrowState.NEUTRAL)
                     {
+                        robotComponents.robotRightEyebrow.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyelids.eyelidState == Eyelids.EyelidState.OPEN)
                     {
+                        robotComponents.robotRightEyelids.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotLeftEyelids.eyelidState == Eyelids.EyelidState.OPEN)
                     {
+                        robotComponents.robotLeftEyelids.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.NEUTRAL)
                     {
+                        robotComponents.robotSkinTone.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotMouthOpen.mouthOpenState == MouthOpen.MouthOpenState.CLOSED)
                     {
+                        robotComponents.robotMouthOpen.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 2.0f;
                     }
 
                     if (robotComponents.robotMouthSmile.mouthSmileState == MouthSmile.MouthSmileState.SMILE)
                     {
+                        robotComponents.robotMouthSmile.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 2.0f;
                     }
 
@@ -667,36 +723,43 @@ public class GameController : MonoBehaviour
                     float correctCounter = 0;
                     if (robotComponents.robotLeftEyebrow.eyebrowState == Eyebrow.EyebrowState.RAISED)
                     {
+                        robotComponents.robotLeftEyebrow.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyebrow.eyebrowState == Eyebrow.EyebrowState.RAISED)
                     {
+                        robotComponents.robotRightEyebrow.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyelids.eyelidState == Eyelids.EyelidState.OPEN)
                     {
+                        robotComponents.robotRightEyelids.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotLeftEyelids.eyelidState == Eyelids.EyelidState.OPEN)
                     {
+                        robotComponents.robotLeftEyelids.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.PALE)
                     {
+                        robotComponents.robotSkinTone.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotMouthOpen.mouthOpenState == MouthOpen.MouthOpenState.CLOSED)
                     {
+                        robotComponents.robotMouthOpen.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 2.0f;
                     }
 
                     if (robotComponents.robotMouthSmile.mouthSmileState == MouthSmile.MouthSmileState.NEUTRAL)
                     {
+                        robotComponents.robotMouthSmile.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 2.0f;
                     }
 
@@ -711,36 +774,43 @@ public class GameController : MonoBehaviour
                     float correctCounter = 0;
                     if (robotComponents.robotLeftEyebrow.eyebrowState == Eyebrow.EyebrowState.NEUTRAL)
                     {
+                        robotComponents.robotLeftEyebrow.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyebrow.eyebrowState == Eyebrow.EyebrowState.NEUTRAL)
                     {
+                        robotComponents.robotRightEyebrow.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyelids.eyelidState == Eyelids.EyelidState.SQUINTING)
                     {
+                        robotComponents.robotRightEyelids.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotLeftEyelids.eyelidState == Eyelids.EyelidState.SQUINTING)
                     {
+                        robotComponents.robotLeftEyelids.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.NEUTRAL)
                     {
+                        robotComponents.robotSkinTone.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotMouthOpen.mouthOpenState == MouthOpen.MouthOpenState.CLOSED)
                     {
+                        robotComponents.robotMouthOpen.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 2.0f;
                     }
 
                     if (robotComponents.robotMouthSmile.mouthSmileState == MouthSmile.MouthSmileState.SMIRK)
                     {
+                        robotComponents.robotMouthSmile.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 2.0f;
                     }
 
@@ -755,36 +825,43 @@ public class GameController : MonoBehaviour
                     float correctCounter = 0;
                     if (robotComponents.robotLeftEyebrow.eyebrowState == Eyebrow.EyebrowState.NEUTRAL)
                     {
+                        robotComponents.robotLeftEyebrow.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyebrow.eyebrowState == Eyebrow.EyebrowState.NEUTRAL)
                     {
+                        robotComponents.robotRightEyebrow.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyelids.eyelidState == Eyelids.EyelidState.CLOSED)
                     {
+                        robotComponents.robotRightEyelids.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotLeftEyelids.eyelidState == Eyelids.EyelidState.CLOSED)
                     {
+                        robotComponents.robotLeftEyelids.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.NEUTRAL)
                     {
+                        robotComponents.robotSkinTone.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotMouthOpen.mouthOpenState == MouthOpen.MouthOpenState.CLOSED)
                     {
+                        robotComponents.robotMouthOpen.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 2.0f;
                     }
 
                     if (robotComponents.robotMouthSmile.mouthSmileState == MouthSmile.MouthSmileState.FROWN)
                     {
+                        robotComponents.robotMouthSmile.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 2.0f;
                     }
 
@@ -799,36 +876,43 @@ public class GameController : MonoBehaviour
                     float correctCounter = 0;
                     if (robotComponents.robotLeftEyebrow.eyebrowState == Eyebrow.EyebrowState.RAISED)
                     {
+                        robotComponents.robotLeftEyebrow.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyebrow.eyebrowState == Eyebrow.EyebrowState.RAISED)
                     {
+                        robotComponents.robotRightEyebrow.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyelids.eyelidState == Eyelids.EyelidState.OPEN)
                     {
+                        robotComponents.robotRightEyelids.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotLeftEyelids.eyelidState == Eyelids.EyelidState.OPEN)
                     {
+                        robotComponents.robotLeftEyelids.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.PALE)
                     {
+                        robotComponents.robotSkinTone.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotMouthOpen.mouthOpenState == MouthOpen.MouthOpenState.OPEN)
                     {
+                        robotComponents.robotMouthOpen.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 2.0f;
                     }
 
                     if (robotComponents.robotMouthSmile.mouthSmileState == MouthSmile.MouthSmileState.FROWN)
                     {
+                        robotComponents.robotMouthSmile.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 2.0f;
                     }
 
@@ -843,36 +927,43 @@ public class GameController : MonoBehaviour
                     float correctCounter = 0;
                     if (robotComponents.robotLeftEyebrow.eyebrowState == Eyebrow.EyebrowState.RAISED)
                     {
+                        robotComponents.robotLeftEyebrow.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyebrow.eyebrowState == Eyebrow.EyebrowState.RAISED)
                     {
+                        robotComponents.robotRightEyebrow.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotRightEyelids.eyelidState == Eyelids.EyelidState.OPEN)
                     {
+                        robotComponents.robotRightEyelids.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotLeftEyelids.eyelidState == Eyelids.EyelidState.OPEN)
                     {
+                        robotComponents.robotLeftEyelids.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 1.0f;
                     }
 
                     if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.BLUSHING)
                     {
+                        robotComponents.robotSkinTone.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
                     if (robotComponents.robotMouthOpen.mouthOpenState == MouthOpen.MouthOpenState.OPEN)
                     {
+                        robotComponents.robotMouthOpen.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 2.0f;
                     }
 
                     if (robotComponents.robotMouthSmile.mouthSmileState == MouthSmile.MouthSmileState.NEUTRAL)
                     {
+                        robotComponents.robotMouthSmile.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 2.0f;
                     }
 
