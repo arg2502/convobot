@@ -792,6 +792,11 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!23 &163397100 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2300024, guid: 05445899ad347bf4ba7cef5626e62d73,
+    type: 3}
+  m_PrefabInternal: {fileID: 227585077}
 --- !u!1 &180281709
 GameObject:
   m_ObjectHideFlags: 0
@@ -2317,6 +2322,11 @@ MeshFilter:
 --- !u!1 &511457435 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100032, guid: 05445899ad347bf4ba7cef5626e62d73,
+    type: 3}
+  m_PrefabInternal: {fileID: 227585077}
+--- !u!137 &511457437 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 13700002, guid: 05445899ad347bf4ba7cef5626e62d73,
     type: 3}
   m_PrefabInternal: {fileID: 227585077}
 --- !u!114 &511457438
@@ -18850,6 +18860,11 @@ MonoBehaviour:
   highlightSpeed: 1
   correctColor: {r: 1, g: 1, b: 1, a: 1}
   incorrectColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!23 &1192954211 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2300012, guid: 05445899ad347bf4ba7cef5626e62d73,
+    type: 3}
+  m_PrefabInternal: {fileID: 227585077}
 --- !u!114 &1192954212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18861,6 +18876,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 799e3bf2f1a50364d96711ff2471ba54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skinRenderers:
+  - {fileID: 1192954211}
+  - {fileID: 1990505655}
+  - {fileID: 511457437}
+  - {fileID: 1428954916}
+  - {fileID: 163397100}
+  - {fileID: 1799254791}
   skinState: 0
 --- !u!1 &1198203943
 GameObject:
@@ -19240,6 +19262,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1509360395170604, guid: 05169f46663241841af969887ce5e4a4,
     type: 2}
   m_PrefabInternal: {fileID: 1124834463}
+--- !u!23 &1428954916 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2300016, guid: 05445899ad347bf4ba7cef5626e62d73,
+    type: 3}
+  m_PrefabInternal: {fileID: 227585077}
 --- !u!1 &1464281778
 GameObject:
   m_ObjectHideFlags: 0
@@ -20843,6 +20870,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1746508423}
   m_Mesh: {fileID: 4300016, guid: d2d74878f2c89c0448619622c85d13cf, type: 3}
+--- !u!23 &1799254791 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2300020, guid: 05445899ad347bf4ba7cef5626e62d73,
+    type: 3}
+  m_PrefabInternal: {fileID: 227585077}
 --- !u!1 &1810313330
 GameObject:
   m_ObjectHideFlags: 0
@@ -21593,7 +21625,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4314028354453820, guid: 86cae54651f25bb43a84f54808f332e8, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114566391504527900, guid: 86cae54651f25bb43a84f54808f332e8,
         type: 2}
@@ -21808,6 +21840,11 @@ MonoBehaviour:
 --- !u!1 &1990505653 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100022, guid: 05445899ad347bf4ba7cef5626e62d73,
+    type: 3}
+  m_PrefabInternal: {fileID: 227585077}
+--- !u!137 &1990505655 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 13700000, guid: 05445899ad347bf4ba7cef5626e62d73,
     type: 3}
   m_PrefabInternal: {fileID: 227585077}
 --- !u!114 &1990505656

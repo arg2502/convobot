@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SkinTone : FacePart {
 
-    MeshRenderer skinMat;
+    public List<Renderer> skinRenderers;
     Color originalColor;
 
     public enum SkinState { NEUTRAL, PALE, BLUSHING, FURIOUS, _COUNT }
@@ -12,8 +12,7 @@ public class SkinTone : FacePart {
 
     void Start()
     {
-        skinMat = GetComponentInChildren<MeshRenderer>();
-		originalColor = skinMat.material.GetColor("_Color");
+		originalColor = GetComponentInChildren<MeshRenderer>().material.GetColor("_Color");
         numOfStates = (int)SkinState._COUNT;
     }
 
@@ -26,11 +25,30 @@ public class SkinTone : FacePart {
     void CheckSkinTone()
     {
         // if positive, add red -- blushing, fury
-        if (value >= 0)
-			skinMat.material.SetColor("_Color", originalColor + new Color(value/2f, -value/2f, -value/2f));
+        if (value >= 0)        
+            skinRenderers.ForEach((r) => SetRed(r));            
+        
         // if negative, add white -- pale
         else
-			skinMat.material.SetColor("_Color", originalColor + new Color(-value/2f, -value/2f, -value/2f));
+            skinRenderers.ForEach((r) => SetWhite(r));
+    }
+
+    void SetRed(Renderer r)
+    {                
+        foreach(var mat in r.materials)
+        {
+            if (mat.name.Contains("skin"))
+                mat.SetColor("_Color", originalColor + new Color(value / 2f, -value / 2f, -value / 2f));
+        }        
+    }
+
+    void SetWhite(Renderer r)
+    {
+        foreach (var mat in r.materials)
+        {
+            if (mat.name.Contains("skin"))
+                mat.SetColor("_Color", originalColor + new Color(-value / 2f, -value / 2f, -value / 2f));
+        }
     }
 
     void CheckState()
