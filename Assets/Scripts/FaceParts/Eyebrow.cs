@@ -16,10 +16,14 @@ public class Eyebrow : FacePart {
     float originalZRot; // base new rotation off of the original neutral position
     float rotateMult = 30f; // determines how far the brow can rotate. Arbitrariily chosen.
 
+    Animator anim;
+
     void Start()
     {
         originalZRot = transform.rotation.z;
         numOfStates = (int)EyebrowState._COUNT;
+        anim = GetComponent<Animator>();
+        anim.speed = 0f;
     }
 
 	void Update()
@@ -33,9 +37,12 @@ public class Eyebrow : FacePart {
     /// </summary>
     void RotateBrow()
     {
-        var rot = transform.rotation;
-        var quat = Quaternion.Euler(rot.eulerAngles.x, rot.eulerAngles.y, originalZRot + (value * rotateMult * BrowSide));
-        transform.rotation = quat;
+        //var rot = transform.rotation;
+        //var quat = Quaternion.Euler(rot.eulerAngles.x, rot.eulerAngles.y, originalZRot + (value * rotateMult * BrowSide));
+        //transform.rotation = quat;
+        var pos = (value + 1f) / 2f;
+        if (pos >= 1) pos -= 0.01f; // weird thing where animator show 0 position when == 1
+        anim.Play(BrowSide == 1 ? "L_brow" : "R_brow", 0, pos);
     }
 
     /// <summary>
