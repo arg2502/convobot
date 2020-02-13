@@ -409,6 +409,9 @@ public class GameController : MonoBehaviour
             part.StartIncorrectHighlighting();
         }
 
+        //No highlighting for robot skin tone, just doesn't read as intuitively as smaller face parts do
+        robotComponents.robotSkinTone.GetComponent<PartHighlight>().StopHighlighting();
+
         Emotions currentEmotion = levelDatas[conversationIndex].emotion;
         switch(currentEmotion)
         {
@@ -441,7 +444,7 @@ public class GameController : MonoBehaviour
 
                     if(robotComponents.robotSkinTone.skinState == SkinTone.SkinState.NEUTRAL)
                     {
-                        robotComponents.robotSkinTone.GetComponent<PartHighlight>().StartCorrectHighlighting();
+                        //robotComponents.robotSkinTone.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
@@ -492,7 +495,7 @@ public class GameController : MonoBehaviour
 
                     if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.FURIOUS)
                     {
-                        robotComponents.robotSkinTone.GetComponent<PartHighlight>().StartCorrectHighlighting();
+                        //robotComponents.robotSkinTone.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
@@ -543,7 +546,7 @@ public class GameController : MonoBehaviour
 
                     if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.NEUTRAL)
                     {
-                        robotComponents.robotSkinTone.GetComponent<PartHighlight>().StartCorrectHighlighting();
+                        //robotComponents.robotSkinTone.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
@@ -594,7 +597,7 @@ public class GameController : MonoBehaviour
 
                     if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.NEUTRAL)
                     {
-                        robotComponents.robotSkinTone.GetComponent<PartHighlight>().StartCorrectHighlighting();
+                        //robotComponents.robotSkinTone.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
@@ -645,7 +648,7 @@ public class GameController : MonoBehaviour
 
                     if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.PALE)
                     {
-                        robotComponents.robotSkinTone.GetComponent<PartHighlight>().StartCorrectHighlighting();
+                        //robotComponents.robotSkinTone.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
@@ -696,7 +699,7 @@ public class GameController : MonoBehaviour
 
                     if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.NEUTRAL)
                     {
-                        robotComponents.robotSkinTone.GetComponent<PartHighlight>().StartCorrectHighlighting();
+                        //robotComponents.robotSkinTone.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
@@ -747,7 +750,7 @@ public class GameController : MonoBehaviour
 
                     if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.PALE)
                     {
-                        robotComponents.robotSkinTone.GetComponent<PartHighlight>().StartCorrectHighlighting();
+                        //robotComponents.robotSkinTone.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
@@ -798,7 +801,7 @@ public class GameController : MonoBehaviour
 
                     if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.NEUTRAL)
                     {
-                        robotComponents.robotSkinTone.GetComponent<PartHighlight>().StartCorrectHighlighting();
+                        //robotComponents.robotSkinTone.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
@@ -849,7 +852,7 @@ public class GameController : MonoBehaviour
 
                     if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.NEUTRAL)
                     {
-                        robotComponents.robotSkinTone.GetComponent<PartHighlight>().StartCorrectHighlighting();
+                        //robotComponents.robotSkinTone.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
@@ -900,7 +903,7 @@ public class GameController : MonoBehaviour
 
                     if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.PALE)
                     {
-                        robotComponents.robotSkinTone.GetComponent<PartHighlight>().StartCorrectHighlighting();
+                        //robotComponents.robotSkinTone.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
@@ -951,7 +954,7 @@ public class GameController : MonoBehaviour
 
                     if (robotComponents.robotSkinTone.skinState == SkinTone.SkinState.BLUSHING)
                     {
-                        robotComponents.robotSkinTone.GetComponent<PartHighlight>().StartCorrectHighlighting();
+                        //robotComponents.robotSkinTone.GetComponent<PartHighlight>().StartCorrectHighlighting();
                         correctCounter += 0.5f;
                     }
 
