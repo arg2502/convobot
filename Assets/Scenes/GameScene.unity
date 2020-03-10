@@ -90,7 +90,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1627,7 +1627,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243554676845547530, guid: 345a35bf7fef1b344808f1306a368b2f,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: f0253a85ef0c78344a6d03e53044cb60, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 25e6d2311b7acbc4d988bc4fcf081aed, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -17930,7 +17930,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243554676845547530, guid: 345a35bf7fef1b344808f1306a368b2f,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 5056cbc9d1a70c34887f7a2066e7ffe5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7fb00a27ef480bc468b8b2db3af91229, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
