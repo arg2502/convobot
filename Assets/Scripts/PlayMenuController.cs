@@ -57,9 +57,9 @@ public class PlayMenuController : MonoBehaviour
 		
 	}
 
-    public void GoToGame()
+    public void GoToGame(string sceneName)
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene(sceneName);
     }
 
     private void setUpButtons()
@@ -70,16 +70,19 @@ public class PlayMenuController : MonoBehaviour
             if(currentLevel > 1 && PlayerPrefs.GetInt("Level" + i.ToString() + "Complete") == 0)
             {
                 buttonImages[i].sprite = lockedImage;
+                buttonImages[i].gameObject.GetComponent<Button>().enabled = false;
             }
             else
             {
                 if(PlayerPrefs.GetInt("Level" + currentLevel.ToString() + "Perfect") == 0)
                 {
                     buttonImages[i].sprite = activeImage;
+                    buttonImages[i].gameObject.GetComponent<Button>().enabled = true;
                 }
                 else
                 {
                     buttonImages[i].sprite = perfectImage;
+                    buttonImages[i].gameObject.GetComponent<Button>().enabled = true;
                 }
             }
         }

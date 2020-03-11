@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: f75952f08fd684f45a8d452a6dd58516
+  - enabled: 1
+    path: Assets/Scenes/InterviewScene.unity
+    guid: 52346c8d0ec70fd46ba652dd77b01275
+  - enabled: 1
+    path: Assets/Scenes/InterogationScene.unity
+    guid: 9af95b14974e52849a42121b5667e3aa
   m_configObjects: {}

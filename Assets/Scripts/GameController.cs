@@ -76,6 +76,8 @@ public class GameController : MonoBehaviour
     public int levelNumber = 1;
     public PauseScreen pauseScreen;
     public bool isPauseDown;
+    public string levelCompleteString;
+    public string levelPerfectString;
 
     private PartHighlight[] partHighlightComponenets;
 
@@ -1039,16 +1041,16 @@ public class GameController : MonoBehaviour
         {
             case 1:
             {
-                if(PlayerPrefs.HasKey("Level1Complete"))
+                if(PlayerPrefs.HasKey(levelCompleteString))
                 {
-                    PlayerPrefs.SetInt("Level1Complete", didYouWin);
+                    PlayerPrefs.SetInt(levelCompleteString, didYouWin);
                 }
 
                 if (chances >= 3)
                 {
-                    if (PlayerPrefs.HasKey("Level1Perfect"))
+                    if (PlayerPrefs.HasKey(levelPerfectString))
                     {
-                        PlayerPrefs.SetInt("Level1Perfect", 1);
+                        PlayerPrefs.SetInt(levelPerfectString, 1);
                     }
                 }
                 break;
