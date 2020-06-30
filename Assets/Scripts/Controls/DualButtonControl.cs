@@ -13,6 +13,7 @@ public class DualButtonControl : Control {
         Button down = DownButton.GetComponent<Button>();
         up.onClick.AddListener(delegate {updateValue("Up"); });
         down.onClick.AddListener(delegate {updateValue("Down"); });
+        base.Start();
     }
 	
 	void updateValue(string direction)
@@ -30,6 +31,14 @@ public class DualButtonControl : Control {
             value -= 0.1f;
             if (value < MIN_VALUE) value = MIN_VALUE;
         }
-		base.UpdateFace();
+		//base.UpdateFace();
 	}
+
+    private void Update()
+    {
+        // IF LEVEL IS 3
+        value += Skew;
+
+        base.Update();
+    }
 }

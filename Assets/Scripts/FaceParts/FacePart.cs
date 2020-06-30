@@ -21,13 +21,14 @@ public class FacePart : MonoBehaviour {
 
     public AudioClip sfx { get; set; }
 
-    public void UpdateState(float _value) 
+    public void UpdateState(float _value, bool playSound) 
     {
         prevValue = (Mathf.Round(value * 10f) / 10f);
-        value = _value;
+        value = Mathf.Clamp(_value, MIN_VALUE, MAX_VALUE);
+        //print("value: " + value);
         
         float roundedValue = (Mathf.Round(_value * 10f) / 10f);
-        if (prevValue != roundedValue)
+        if (playSound && prevValue != roundedValue)
             PlaySFX();
     }
 

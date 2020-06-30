@@ -16,6 +16,7 @@ public class Wheel : Control {
         sensitivity = 0.4f;
         rotation = Vector3.zero;
         wheelModel = transform.GetChild(0).gameObject;
+        base.Start();
     }
     protected override void OnMouseDown()
     {
@@ -51,6 +52,16 @@ public class Wheel : Control {
             // now change the value
             var newValue = -(rotation.x) * valueMult;
             value += newValue;
+        }
+        // IF LEVEL THREE
+        else
+        {
+            value += Skew;
+            if (value < MAX_VALUE && value > MIN_VALUE)
+            {
+                rotation.x = -Skew / valueMult;
+                wheelModel.transform.Rotate(rotation);
+            }
         }
     }
 }

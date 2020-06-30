@@ -16,8 +16,7 @@ public class SliderControl : Control {
         uiSlider = GetComponent<Slider>();
         uiSlider.minValue = MIN_VALUE;
         uiSlider.maxValue = MAX_VALUE;
-        uiSlider.value = NEUTRAL;
-
+        uiSlider.value = NEUTRAL;        
         
         if (modelSlide != null)
         {
@@ -26,6 +25,8 @@ public class SliderControl : Control {
             //UpdateModelSlider();
             //slideAnimator.Play("Slider", -1, 0);
         }
+
+        base.Start();
     }
 	
 	new void Update()
@@ -49,6 +50,10 @@ public class SliderControl : Control {
                 soundIsPlaying = false;
                 AudioManager.instance.StopSource(sfx);
             }
+
+            // IF LEVEL IS 3
+            value += Skew;
+            uiSlider.value = value;
         }
         //var uiPos = uiSlider.handleRect.;
         //print(uiPos);

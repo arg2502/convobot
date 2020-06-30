@@ -11,6 +11,7 @@ public class Switch : Control {
         animator = GetComponent<Animator>();
         animator.speed = 0;
         UpdateSwitchPosition();
+        base.Start();
     }
 
     protected override void OnMouseDown()
@@ -19,6 +20,11 @@ public class Switch : Control {
 
         if (!canMove) return;
 
+        ChangeValue();
+    }
+
+    void ChangeValue()
+    {
         if (value <= MIN_VALUE)
             value = NEUTRAL;
         else if (value == NEUTRAL)
@@ -39,4 +45,9 @@ public class Switch : Control {
         animator.Play(stateName, -1, time);
     }
 
+    protected override void SwitchTimer()
+    {
+        ChangeValue();
+        base.SwitchTimer();
+    }
 }
