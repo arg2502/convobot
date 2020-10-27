@@ -18462,7 +18462,7 @@ Prefab:
     - target: {fileID: 114511539390988960, guid: 05169f46663241841af969887ce5e4a4,
         type: 2}
       propertyPath: m_margin.w
-      value: 2.6632414
+      value: 2.8406327
       objectReference: {fileID: 0}
     - target: {fileID: 114511539390988960, guid: 05169f46663241841af969887ce5e4a4,
         type: 2}
@@ -18517,7 +18517,7 @@ Prefab:
     - target: {fileID: 114511539390988960, guid: 05169f46663241841af969887ce5e4a4,
         type: 2}
       propertyPath: m_firstOverflowCharacterIndex
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114511539390988960, guid: 05169f46663241841af969887ce5e4a4,
         type: 2}
@@ -18565,6 +18565,11 @@ Prefab:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+    - target: {fileID: 114511539390988960, guid: 05169f46663241841af969887ce5e4a4,
+        type: 2}
+      propertyPath: m_textAlignment
+      value: 514
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05169f46663241841af969887ce5e4a4, type: 2}
   m_IsPrefabAsset: 0
