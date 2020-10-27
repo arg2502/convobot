@@ -51,9 +51,9 @@ public class SliderControl : Control {
                 AudioManager.instance.StopSource(sfx);
             }
 
-            // IF LEVEL IS 3
-            value += Skew;
-            uiSlider.value = value;
+            //// IF LEVEL IS 3
+            //value += Skew;
+            //uiSlider.value = value;
         }
         //var uiPos = uiSlider.handleRect.;
         //print(uiPos);

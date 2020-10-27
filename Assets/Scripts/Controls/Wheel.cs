@@ -53,15 +53,15 @@ public class Wheel : Control {
             var newValue = -(rotation.x) * valueMult;
             value += newValue;
         }
-        // IF LEVEL THREE
-        else
-        {
-            value += Skew;
-            if (value < MAX_VALUE && value > MIN_VALUE)
-            {
-                rotation.x = -Skew / valueMult;
-                wheelModel.transform.Rotate(rotation);
-            }
-        }
+        //// IF LEVEL THREE
+        //else
+        //{
+        //    value += Skew;
+        //    if (value < MAX_VALUE && value > MIN_VALUE)
+        //    {
+        //        rotation.x = -Skew / valueMult;
+        //        wheelModel.transform.Rotate(rotation);
+        //    }
+        //}
     }
 }

@@ -64,9 +64,9 @@ public class Control : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
 
     protected virtual void SwitchTimer()
     {
-        skewDirection *= -1;
-        timerStart = Mathf.RoundToInt(Random.Range(timerChangeMin, timerChangeMax));
-        timer = timerStart;
+        //skewDirection *= -1;
+        //timerStart = Mathf.RoundToInt(Random.Range(timerChangeMin, timerChangeMax));
+        //timer = timerStart;
     }
      
     protected void Update()
