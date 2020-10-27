@@ -54,12 +54,12 @@ public class Control : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
 
     private void TimerTick()
     {
-        timer -= Time.deltaTime;
+        //timer -= Time.deltaTime;
 
-        if (timer <= 0f)
-        {
-            SwitchTimer();
-        }
+        //if (timer <= 0f)
+        //{
+        //    SwitchTimer();
+        //}
     }
 
     protected virtual void SwitchTimer()
