@@ -988,7 +988,7 @@ public class GameController : MonoBehaviour
     IEnumerator CorrectSequence()
     {
         correctBanner.gameObject.SetActive(true);
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(2);
         correctBanner.gameObject.SetActive(false);
         ChangeStage(GameStages.ConversationStage);
     }
@@ -996,7 +996,7 @@ public class GameController : MonoBehaviour
     IEnumerator IncorrectSequence()
     {
         incorrectBanner.gameObject.SetActive(true);
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(2);
         incorrectBanner.gameObject.SetActive(false);
         ChangeStage(GameStages.ConversationStage);
     }
