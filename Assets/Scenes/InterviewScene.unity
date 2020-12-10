@@ -18397,7 +18397,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1143971136}
   - component: {fileID: 1143971137}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: emoji_jim_suspicious
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18451,7 +18451,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 4a5982667c3ce284eabe58062244ea93, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -18923,7 +18923,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1234247054}
   - component: {fileID: 1234247055}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: emoji_jim_happy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18977,7 +18977,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: e31a80ea8c63899439f04de38705ebc1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -19341,7 +19341,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1479440415}
   - component: {fileID: 1479440416}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: emoji_jim_surprised
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19395,7 +19395,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: f67ca757725a8f541b706c3d48d686ce, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -20954,7 +20954,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1903146982}
   - component: {fileID: 1903146983}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: emoji_jim_angry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21008,7 +21008,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: cabbe3f6401ebc7468a7f6c04ca7ceab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -21141,7 +21141,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1933485890}
   - component: {fileID: 1933485891}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: emoji_jim_sad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21195,7 +21195,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 6bb069d185990c340a4eea0729b291b0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

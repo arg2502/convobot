@@ -86,6 +86,7 @@ public class GameController : MonoBehaviour
 
     void Start ()
     {
+        levelNumber = GetLevelNumber();
         robotComponents = robotCharacter.GetComponent<Robot>();
         partHighlightComponenets = GameObject.FindObjectsOfType<PartHighlight>();
 
@@ -1103,5 +1104,18 @@ public class GameController : MonoBehaviour
     void UpdatePauseStage()
     {
         
+    }
+
+    private int GetLevelNumber()
+    {
+        switch(SceneManager.GetActiveScene().name)
+        {
+            case "TutorialScene": return 0;
+            case "GameScene": return 1;
+            case "InterviewScene": return 2;
+            case "InterogationScene": return 3;
+            case "Credits": return 999;
+            default: return 1;
+        }
     }
 }
