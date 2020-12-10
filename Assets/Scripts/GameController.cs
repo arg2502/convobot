@@ -59,7 +59,8 @@ public class GameController : MonoBehaviour
     public Vector3 hatchOffPosition;
     public GameObject timerWindow;
     public TextMeshPro timerText;
-    System.DateTime adjustmentTimer;
+    System.Diagnostics.Stopwatch adjustmentTimer = new System.Diagnostics.Stopwatch();
+    private bool wasTimerRunning = false;
     public int timerCooldown = 30;
     public int timerCooldownDecay = 5;
     public GameObject correctBanner;
@@ -141,7 +142,7 @@ public class GameController : MonoBehaviour
             }
         }
 
-        if (!isPauseDown && Input.GetKeyDown(KeyCode.Escape))
+        if (!isPauseDown && Input.GetKeyUp(KeyCode.Escape))
         {
             PressPause();            
             isPauseDown = true;
@@ -159,6 +160,11 @@ public class GameController : MonoBehaviour
     void ResumeStage(GameStages stage)
     {
         currentStage = stage;
+        if(wasTimerRunning)
+        {
+            adjustmentTimer.Start();
+            wasTimerRunning = false;
+        }
     }
 
     void StartStage()
@@ -309,21 +315,22 @@ public class GameController : MonoBehaviour
         //All adjustment components are now interactable
         //Have the compontents themselves adjust a set of numeric values so that we can compare them to the correct answers later
         //If the player hits the done button then go to the Move To Conversation stage
-        adjustmentTimer = System.DateTime.Now;
+        adjustmentTimer.Reset();
+        adjustmentTimer.Start();
         timerWindow.SetActive(true);
     }
 
     void UpdateFacialAdjustmentStage()
     {
-        System.TimeSpan ts = System.DateTime.Now - adjustmentTimer;
-        if(ts.Seconds >= timerCooldown)
+        if(adjustmentTimer.Elapsed.Seconds >= timerCooldown)
         {
+            adjustmentTimer.Stop();
             timerCooldown -= timerCooldownDecay;
             ChangeStage(GameStages.MoveToConversationStage);
         }
         else
         {
-            int timeStamp = timerCooldown - ts.Seconds;
+            int timeStamp = timerCooldown - adjustmentTimer.Elapsed.Seconds;
             timerText.text = timeStamp.ToString();
         }
     }
@@ -1083,6 +1090,11 @@ public class GameController : MonoBehaviour
 
     void StartPauseStage()
     {        
+        if(adjustmentTimer.IsRunning)
+        {
+            adjustmentTimer.Stop();
+            wasTimerRunning = true;
+        }
         controlGenerator.ToggleControlsCanMove(false);
         controlGenerator.PauseControls(true);
         pauseScreen.OpenScreen();
