@@ -1048,8 +1048,8 @@ MonoBehaviour:
   controlGenerator: {fileID: 2060181245}
   connectorController: {fileID: 1696699337}
   timeline: {fileID: 1967522378}
-  zoomIn: {fileID: 11400000, guid: 49877a86bf7e94440a7c9e8375444a31, type: 2}
-  zoomOut: {fileID: 11400000, guid: 4b1b110587aac08409dce3df45361c53, type: 2}
+  zoomIn: {fileID: 11400000, guid: ae4118f75ead27d4d89241340af45d35, type: 2}
+  zoomOut: {fileID: 11400000, guid: 54456c196c6ae62488fc8ccb51d24af3, type: 2}
   levelNumber: 2
   pauseScreen: {fileID: 1627588879}
   isPauseDown: 0
@@ -18147,7 +18147,7 @@ Prefab:
     - target: {fileID: 114511539390988960, guid: 05169f46663241841af969887ce5e4a4,
         type: 2}
       propertyPath: m_margin.w
-      value: 2.6632414
+      value: 2.80675
       objectReference: {fileID: 0}
     - target: {fileID: 114511539390988960, guid: 05169f46663241841af969887ce5e4a4,
         type: 2}
@@ -18162,17 +18162,17 @@ Prefab:
     - target: {fileID: 114511539390988960, guid: 05169f46663241841af969887ce5e4a4,
         type: 2}
       propertyPath: m_text
-      value: Hello Karen, I use Unity now.
+      value: 'Hello Karen, I use Unity now. '
       objectReference: {fileID: 0}
     - target: {fileID: 114511539390988960, guid: 05169f46663241841af969887ce5e4a4,
         type: 2}
       propertyPath: m_textInfo.characterCount
-      value: 29
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 114511539390988960, guid: 05169f46663241841af969887ce5e4a4,
         type: 2}
       propertyPath: m_textInfo.spaceCount
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114511539390988960, guid: 05169f46663241841af969887ce5e4a4,
         type: 2}
@@ -18250,6 +18250,11 @@ Prefab:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+    - target: {fileID: 114511539390988960, guid: 05169f46663241841af969887ce5e4a4,
+        type: 2}
+      propertyPath: m_textAlignment
+      value: 514
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05169f46663241841af969887ce5e4a4, type: 2}
   m_IsPrefabAsset: 0
@@ -21391,6 +21396,10 @@ Prefab:
       propertyPath: correctColor.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1390381949641528, guid: 86cae54651f25bb43a84f54808f332e8, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86cae54651f25bb43a84f54808f332e8, type: 2}
   m_IsPrefabAsset: 0
@@ -21454,7 +21463,7 @@ PlayableDirector:
   m_GameObject: {fileID: 1967522375}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 4b1b110587aac08409dce3df45361c53, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: 54456c196c6ae62488fc8ccb51d24af3, type: 2}
   m_InitialState: 1
   m_WrapMode: 0
   m_DirectorUpdateMode: 1
@@ -21508,6 +21517,50 @@ PlayableDirector:
     value: {fileID: 830577005}
   - key: {fileID: 0}
     value: {fileID: 830577005}
+  - key: {fileID: 114478411580635418, guid: 54456c196c6ae62488fc8ccb51d24af3, type: 2}
+    value: {fileID: 1967522377}
+  - key: {fileID: 114923025899729872, guid: 54456c196c6ae62488fc8ccb51d24af3, type: 2}
+    value: {fileID: 439301996}
+  - key: {fileID: 114450876082350222, guid: 54456c196c6ae62488fc8ccb51d24af3, type: 2}
+    value: {fileID: 153714694}
+  - key: {fileID: 114699039514793178, guid: 54456c196c6ae62488fc8ccb51d24af3, type: 2}
+    value: {fileID: 830577005}
+  - key: {fileID: 114667155934668186, guid: 54456c196c6ae62488fc8ccb51d24af3, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 114105727228081168, guid: 54456c196c6ae62488fc8ccb51d24af3, type: 2}
+    value: {fileID: 2006865902}
+  - key: {fileID: 114448359402737434, guid: 54456c196c6ae62488fc8ccb51d24af3, type: 2}
+    value: {fileID: 802785674}
+  - key: {fileID: 114750503276063880, guid: 54456c196c6ae62488fc8ccb51d24af3, type: 2}
+    value: {fileID: 1115487888}
+  - key: {fileID: 114391351092861068, guid: 54456c196c6ae62488fc8ccb51d24af3, type: 2}
+    value: {fileID: 2006865906}
+  - key: {fileID: 114654920739561420, guid: 54456c196c6ae62488fc8ccb51d24af3, type: 2}
+    value: {fileID: 802785678}
+  - key: {fileID: 114889487648543426, guid: 54456c196c6ae62488fc8ccb51d24af3, type: 2}
+    value: {fileID: 1115487892}
+  - key: {fileID: 114478411580635418, guid: ae4118f75ead27d4d89241340af45d35, type: 2}
+    value: {fileID: 1967522377}
+  - key: {fileID: 114923025899729872, guid: ae4118f75ead27d4d89241340af45d35, type: 2}
+    value: {fileID: 439301996}
+  - key: {fileID: 114909177924308008, guid: ae4118f75ead27d4d89241340af45d35, type: 2}
+    value: {fileID: 153714694}
+  - key: {fileID: 114917641916389090, guid: ae4118f75ead27d4d89241340af45d35, type: 2}
+    value: {fileID: 830577005}
+  - key: {fileID: 114256939127506872, guid: ae4118f75ead27d4d89241340af45d35, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 114270994187016728, guid: ae4118f75ead27d4d89241340af45d35, type: 2}
+    value: {fileID: 2006865902}
+  - key: {fileID: 114303420734399218, guid: ae4118f75ead27d4d89241340af45d35, type: 2}
+    value: {fileID: 802785674}
+  - key: {fileID: 114906723876500312, guid: ae4118f75ead27d4d89241340af45d35, type: 2}
+    value: {fileID: 1115487888}
+  - key: {fileID: 114093459450460960, guid: ae4118f75ead27d4d89241340af45d35, type: 2}
+    value: {fileID: 2006865906}
+  - key: {fileID: 114305881885845744, guid: ae4118f75ead27d4d89241340af45d35, type: 2}
+    value: {fileID: 802785678}
+  - key: {fileID: 114977227608128708, guid: ae4118f75ead27d4d89241340af45d35, type: 2}
+    value: {fileID: 1115487892}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &1973348282 stripped
