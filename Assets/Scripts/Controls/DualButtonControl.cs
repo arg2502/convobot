@@ -37,7 +37,8 @@ public class DualButtonControl : Control {
     private void Update()
     {
         // IF LEVEL IS 3
-        //value += Skew;
+        if (GameController.levelNumber == 3)
+            value += Skew;
 
         base.Update();
     }

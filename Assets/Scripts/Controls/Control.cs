@@ -17,8 +17,7 @@ public class Control : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
     protected float timer, timerStart;
     private int timerChangeMin = 4;
     private int timerChangeMax = 7;
-
-
+    
     // corresponding part that is affected by the control -- assigned in inspector
     public FacePart facePart;
     public AudioClip sfx;
@@ -54,24 +53,27 @@ public class Control : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
 
     private void TimerTick()
     {
-        //timer -= Time.deltaTime;
+        timer -= Time.deltaTime;
 
-        //if (timer <= 0f)
-        //{
-        //    SwitchTimer();
-        //}
+        if (timer <= 0f)
+        {
+            SwitchTimer();
+        }
     }
 
     protected virtual void SwitchTimer()
     {
-        //skewDirection *= -1;
-        //timerStart = Mathf.RoundToInt(Random.Range(timerChangeMin, timerChangeMax));
-        //timer = timerStart;
+        skewDirection *= -1;
+        timerStart = Mathf.RoundToInt(Random.Range(timerChangeMin, timerChangeMax));
+        timer = timerStart;
     }
      
     protected void Update()
     {
-        TimerTick();
+        if (GameController.levelNumber == 3)
+        {
+            TimerTick();
+        }
         value = Mathf.Clamp(value, MIN_VALUE, MAX_VALUE);
         UpdateFace(canMove);
     }

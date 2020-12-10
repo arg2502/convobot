@@ -4,6 +4,8 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
+using System.Text.RegularExpressions;
+using System;
 
 public class GameController : MonoBehaviour
 {
@@ -73,7 +75,7 @@ public class GameController : MonoBehaviour
     public PlayableDirector timeline;
     public PlayableAsset zoomIn;
     public PlayableAsset zoomOut;
-    public int levelNumber = 1;
+    public static int levelNumber = 1;
     public PauseScreen pauseScreen;
     public bool isPauseDown;
     public string levelCompleteString;
